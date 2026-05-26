@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análise do Plano de Ação — Autocare | Live Consultoria</title>
+  <meta name="description" content="Apresentação estratégica da Autocare: Análise do plano de ação e das conclusões da reunião de Business Plan de 25/05/2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Merriweather:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #06192a;
+      --bg2:       #081f35;
+      --surface:   #0d2840;
+      --surface2:  #143655;
+      --surface3:  #1b4470;
+      --border:    rgba(255,255,255,0.07);
+      --border2:   rgba(0,232,0,0.2);
+      --green:     #00e800;
+      --green-dim: #00b300;
+      --green-glow:rgba(0,232,0,0.08);
+      --text:      #ffffff;
+      --text-soft: #b5c5d3;
+      --text-dim:  #7a96ad;
+      --orange:    #ffaa33;
+      --red:       #ff4455;
+      --blue:      #4499ff;
+      --font:      'Poppins', sans-serif;
+      --font-q:    'Merriweather', serif;
+    }
+
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────────── */
+    header {
+      flex-shrink: 0;
+      background: rgba(13,40,64,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 200;
+    }
+    .hd-left { display: flex; align-items: center; gap: 14px; }
+    .logo-mark {
+      background: var(--green);
+      color: var(--bg);
+      font-weight: 800;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: .08em;
+    }
+    header h1 { font-size: 14px; font-weight: 600; color: var(--text); }
+    header .sep { color: rgba(255,255,255,0.2); margin: 0 6px; }
+    header .sub { font-size: 12px; color: var(--text-soft); font-weight: 400; }
+    .hd-right { display: flex; align-items: center; gap: 12px; }
+    .badge-live {
+      background: var(--green-glow);
+      border: 1px solid var(--border2);
+      color: var(--green);
+      font-size: 11px; font-weight: 600;
+      padding: 3px 10px; border-radius: 20px;
+    }
+    .date-tag { font-size: 11px; color: var(--text-dim); }
+
+    /* ── DECK ────────────────────────────────────────────────── */
+    .deck-wrap {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding: 20px 30px 10px;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      padding: 36px 44px;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity .45s cubic-bezier(.4,0,.2,1), transform .45s cubic-bezier(.4,0,.2,1);
+      overflow-y: auto;
+    }
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+    .slide.exit-left {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+
+    .deck-inner {
+      position: relative;
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,.35);
+    }
+
+    /* ── SLIDE HEADER ─────────────────────────────────────────── */
+    .sh {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sh-left {}
+    .sh-eyebrow {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 6px;
+    }
+    .sh-title {
+      font-size: 24px; font-weight: 700; line-height: 1.2;
+    }
+    .sh-title em { font-style: normal; color: var(--green); }
+    .sh-num {
+      font-size: 11px; font-weight: 600;
+      color: var(--text-dim);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 4px 10px; border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* ── SLIDE FOOTER ─────────────────────────────────────────── */
+    .sf {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between;
+      font-size: 11px; color: var(--text-dim);
+    }
+
+    /* ── LAYOUTS ──────────────────────────────────────────────── */
+
+    /* Capa */
+    .cover-body {
+      flex: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; gap: 10px;
+    }
+    .cover-eyebrow {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--green);
+    }
+    .cover-title {
+      font-size: 40px; font-weight: 800; line-height: 1.15;
+    }
+    .cover-title em { font-style: normal; color: var(--green); }
+    .cover-subtitle {
+      font-size: 15px; color: var(--text-soft);
+      max-width: 580px; line-height: 1.7; margin-top: 6px;
+    }
+    .cover-divider {
+      width: 60px; height: 3px;
+      background: var(--green); border-radius: 2px;
+      margin: 14px 0;
+    }
+    .cover-meta {
+      display: flex; gap: 32px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 28px;
+      font-size: 12px; color: var(--text-soft);
+    }
+    .cover-meta strong { color: var(--text); display: block; font-size: 13px; margin-bottom: 2px; }
+
+    /* Grid 2 colunas */
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    /* Grid 3 colunas */
+    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    /* Grid 4 colunas */
+    .g4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; }
+
+    /* Card básico */
+    .card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      transition: border-color .2s, transform .15s;
+    }
+    .card:hover { border-color: var(--green-dim); transform: translateY(-2px); }
+    .card-icon { font-size: 22px; margin-bottom: 8px; }
+    .card-title {
+      font-size: 13.5px; font-weight: 600;
+      color: var(--text); margin-bottom: 7px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .card-body {
+      font-size: 12.5px; color: var(--text-soft); line-height: 1.6;
+    }
+
+    /* Card colorido por variante */
+    .card.green { border-left: 3px solid var(--green); }
+    .card.orange { border-left: 3px solid var(--orange); }
+    .card.red   { border-left: 3px solid var(--red); }
+    .card.blue  { border-left: 3px solid var(--blue); }
+
+    /* Fase card (para roadmap) */
+    .fase-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      position: relative;
+    }
+    .fase-num {
+      position: absolute; top: -12px; left: 18px;
+      background: var(--green); color: var(--bg);
+      font-size: 11px; font-weight: 800;
+      padding: 3px 12px; border-radius: 20px;
+      letter-spacing: .05em;
+    }
+    .fase-period {
+      font-size: 10px; color: var(--green);
+      font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; margin-top: 8px; margin-bottom: 6px;
+    }
+    .fase-title {
+      font-size: 14px; font-weight: 700; color: var(--text);
+      margin-bottom: 8px;
+    }
+    .fase-body { font-size: 12px; color: var(--text-soft); line-height: 1.6; }
+    .fase-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .tag {
+      font-size: 10px; font-weight: 600;
+      padding: 2px 8px; border-radius: 20px;
+      background: rgba(0,232,0,.08);
+      border: 1px solid rgba(0,232,0,.2);
+      color: var(--green);
+    }
+    .tag.red {
+      background: rgba(255,68,85,.08);
+      border-color: rgba(255,68,85,.2);
+      color: var(--red);
+    }
+
+    /* Tabela */
+    .tbl-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+    th {
+      font-size: 10.5px; font-weight: 700; letter-spacing: .05em;
+      text-transform: uppercase; color: var(--green);
+      background: rgba(0,232,0,.04);
+      padding: 10px 14px; text-align: left;
+      border-bottom: 1px solid var(--border2);
+    }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-soft); }
+    td strong { color: var(--text); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(0,232,0,.02); }
+
+    /* Bloco de citação da transcrição */
+    .quote-block {
+      background: rgba(0,232,0,.04);
+      border-left: 3px solid var(--green);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+    }
+    .quote-block p {
+      font-family: var(--font-q);
+      font-size: 13px; font-style: italic;
+      color: var(--text-soft); line-height: 1.7;
+    }
+    .quote-source {
+      font-family: var(--font); font-style: normal;
+      font-size: 10.5px; color: var(--green);
+      font-weight: 600; margin-top: 8px;
+    }
+
+    /* Timeline horizontal */
+    .timeline-h {
+      display: flex; gap: 0; align-items: stretch;
+      margin-top: 6px;
+    }
+    .tl-step {
+      flex: 1;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-right: none;
+      padding: 16px 14px;
+      position: relative;
+    }
+    .tl-step:last-child { border-right: 1px solid var(--border); border-radius: 0 10px 10px 0; }
+    .tl-step:first-child { border-radius: 10px 0 0 10px; }
+    .tl-step::after {
+      content: '→';
+      position: absolute; right: -12px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--green); font-size: 14px; z-index: 2;
+    }
+    .tl-step:last-child::after { display: none; }
+    .tl-step-num {
+      font-size: 10px; font-weight: 700;
+      color: var(--green); letter-spacing: .1em; margin-bottom: 6px;
+    }
+    .tl-step-label { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .tl-step-body { font-size: 11px; color: var(--text-soft); line-height: 1.5; }
+
+    /* Lista com bullets estilizados */
+    .styled-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .styled-list li {
+      display: flex; gap: 12px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 16px;
+      font-size: 12.5px; color: var(--text-soft); line-height: 1.5;
+      align-items: flex-start;
+    }
+    .styled-list li::before {
+      content: '▶';
+      color: var(--green); font-size: 9px;
+      margin-top: 3px; flex-shrink: 0;
+    }
+    .styled-list li strong { color: var(--text); }
+
+    /* Pill de prioridade */
+    .pill-crit {
+      display: inline-block;
+      background: rgba(255,68,85,.12); border: 1px solid rgba(255,68,85,.3);
+      color: var(--red); font-size: 9.5px; font-weight: 700;
+      padding: 1px 8px; border-radius: 20px; letter-spacing: .05em;
+      margin-left: 6px; vertical-align: middle; white-space: nowrap;
+    }
+    .pill-alta {
+      background: rgba(255,170,51,.12); border: 1px solid rgba(255,170,51,.3);
+      color: var(--orange); font-size: 9.5px; font-weight: 700;
+      padding: 1px 8px; border-radius: 20px; letter-spacing: .05em;
+      margin-left: 6px; display: inline-block; vertical-align: middle; white-space: nowrap;
+    }
+    .pill-med {
+      background: rgba(68,153,255,.12); border: 1px solid rgba(68,153,255,.3);
+      color: var(--blue); font-size: 9.5px; font-weight: 700;
+      padding: 1px 8px; border-radius: 20px; letter-spacing: .05em;
+      margin-left: 6px; display: inline-block; vertical-align: middle; white-space: nowrap;
+    }
+
+    /* Destaque de número grande */
+    .big-stat {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 14px;
+      text-align: center;
+    }
+    .big-stat-val { font-size: 32px; font-weight: 800; color: var(--green); }
+    .big-stat-label { font-size: 11px; color: var(--text-soft); margin-top: 4px; line-height: 1.4; }
+
+    /* Seção de 2 painéis (left desc + right visual) */
+    .two-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1; }
+    .panel-desc { display: flex; flex-direction: column; gap: 12px; }
+    .panel-visual { display: flex; flex-direction: column; gap: 12px; }
+
+    /* ── CONTROLS ─────────────────────────────────────────────── */
+    .controls {
+      flex-shrink: 0;
+      padding: 12px 30px;
+      background: rgba(8,31,53,0.9);
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; gap: 0;
+    }
+    .nav-btn {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font); font-size: 12px; font-weight: 600;
+      padding: 8px 18px; border-radius: 8px;
+      cursor: pointer; display: flex; align-items: center; gap: 6px;
+      transition: border-color .15s, background .15s;
+      white-space: nowrap;
+    }
+    .nav-btn:hover { border-color: var(--green-dim); background: var(--surface3); }
+    .nav-btn:disabled { opacity: .4; cursor: default; pointer-events: none; }
+    .nav-btn.primary {
+      background: var(--green); color: var(--bg);
+      border-color: var(--green);
+    }
+    .nav-btn.primary:hover { background: var(--green-dim); border-color: var(--green-dim); }
+
+    .progress-area { flex: 1; padding: 0 24px; }
+    .progress-dots {
+      display: flex; gap: 6px; justify-content: center;
+      flex-wrap: wrap;
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--surface3); cursor: pointer;
+      transition: background .2s, transform .2s;
+      border: 1px solid var(--border);
+    }
+    .dot.active { background: var(--green); transform: scale(1.3); border-color: var(--green); }
+    .dot:hover { background: var(--green-dim); }
+
+    .slide-counter {
+      font-size: 12px; color: var(--text-dim); font-weight: 500;
+      white-space: nowrap;
+    }
+    .slide-counter span { color: var(--green); font-weight: 700; }
+
+    /* Scrollbar dos slides */
+    .slide::-webkit-scrollbar { width: 4px; }
+    .slide::-webkit-scrollbar-track { background: transparent; }
+    .slide::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 2px; }
+
+    @media (max-width: 900px) {
+      .slide { padding: 20px; }
+      .sh-title { font-size: 18px; }
+      .cover-title { font-size: 28px; }
+      .g2, .g3, .g4 { grid-template-columns: 1fr; }
+      .two-panel { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="hd-left">
+    <div class="logo-mark">AUTOCARE</div>
+    <h1>Análise Estratégica do Plano de Ação<span class="sep">|</span><span class="sub">Acompanhamento Live Consultoria</span></h1>
+  </div>
+  <div class="hd-right">
+    <span class="date-tag">25/05/2026</span>
+    <span class="badge-live">Live Consultoria</span>
+  </div>
+</header>
+
+<div class="deck-wrap">
+  <div class="deck-inner">
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 1 — CAPA -->
+    <div class="slide active" id="s1">
+      <div class="cover-body">
+        <div class="cover-eyebrow">Business Plan · Reunião de 25 de Maio de 2026</div>
+        <h2 class="cover-title">A Revolução da Manutenção<br>Preventiva por <em>Assinatura</em></h2>
+        <div class="cover-divider"></div>
+        <p class="cover-subtitle">Análise aprofundada e didática do plano de negócio da Autocare — um ecossistema criado para transformar o comportamento reativo do brasileiro em relação ao seu veículo, com previsibilidade, confiança e tecnologia.</p>
+        <div class="cover-meta">
+          <div><strong>Consultor Líder</strong>Luiz Portal</div>
+          <div><strong>Consultor Apoio</strong>Cléber Donato</div>
+          <div><strong>Parceiro Técnico</strong>Marcel</div>
+          <div><strong>Empresa</strong>Live Consultoria</div>
+          <div><strong>Versão</strong>v1.0 — Maio 2026</div>
+        </div>
+      </div>
+      <div class="sf">
+        <div>Use ← → para navegar · Setas do teclado também funcionam</div>
+        <div>15 slides no total</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 2 — O PROBLEMA -->
+    <div class="slide" id="s2">
+      <div class="sh">
+        <div class="sh-left">
+          <div class="sh-eyebrow">O ponto de partida</div>
+          <div class="sh-title">O Problema que a <em>Autocare Resolve</em></div>
+        </div>
+        <div class="sh-num">02 / 15</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:16px;">
+        <div class="quote-block">
+          <p>"O brasileiro corre atrás do serviço, ele corre atrás do prejuízo. Aqui a gente começa a doutrinar o brasileiro a correr à frente — antes da merda vir, antes do prejuízo vir."</p>
+          <div class="quote-source">— Luiz Portal, Reunião de Business Plan 25/05/2026</div>
+        </div>
+        <div class="g2">
+          <div class="card red">
+            <div class="card-title">😰 Dor do Consumidor Final</div>
+            <div class="card-body">O custo de manutenção é imprevisível e concentrado — a chamada "porrada". Quando aparece, o consumidor não tem dinheiro disponível naquele momento e acaba recorrendo a <strong>oficinas que não têm padrão de qualidade</strong> — os "açougues de carro". O resultado: serviços errados, peças inadequadas e desconfiança crônica.</div>
+          </div>
+          <div class="card red">
+            <div class="card-title">😰 Dor da Oficina Mecânica</div>
+            <div class="card-body">O fluxo de clientes é irregular e sem previsibilidade. Para manter faturamento, a oficina precisa investir cada vez mais em marketing enquanto o custo sobe e o resultado estagna. <strong>Fidelizar é difícil</strong> porque o cliente escolhe pelo preço mais baixo, não pela qualidade.</div>
+          </div>
+          <div class="card orange">
+            <div class="card-title">📦 Dor das Autopeças</div>
+            <div class="card-body">Cada oficina pede de um jeito diferente, sem padronização. Pedidos errados por falta de especificação (código OEM, número da montadora) geram devoluções, retrabalho financeiro e desperdício. <strong>Sem um padrão imposto, nada melhora.</strong></div>
+          </div>
+          <div class="card orange">
+            <div class="card-title">🚛 Dor dos Frotistas (Fase Futura)</div>
+            <div class="card-body">Sistemas de gestão de frota existentes <strong>controlam somente o financeiro</strong>, não a manutenção preventiva nem a rastreabilidade por condutor. Nenhuma empresa do mercado — segundo Marcel — oferece gestão preventiva real com controle de dano por responsável.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sf"><div>O Problema</div><div>Fonte: Transcrição da Reunião BP — 2026-05-25</div></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 3 — PROPOSTA DE VALOR -->
+    <div class="slide" id="s3">
+      <div class="sh">
+        <div class="sh-left">
+          <div class="sh-eyebrow">A Resposta Estratégica</div>
+          <div class="sh-title">Proposta de Valor: <em>Win-Win para Todos</em></div>
+        </div>
+        <div class="sh-num">03 / 15</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:16px;">
+        <div class="g3" style="margin-bottom:4px;">
+          <div class="big-stat"><div class="big-stat-val">R$49,90</div><div class="big-stat-label">Plano Essential/mês · Veículo Popular<br>4L óleo de motor + 4 filtros + inspeção veicular</div></div>
+          <div class="big-stat"><div class="big-stat-val">12x</div><div class="big-stat-label">Parcelas mensais que diluem o gasto anual inevitável com manutenção</div></div>
+          <div class="big-stat"><div class="big-stat-val">5+</div><div class="big-stat-label">Segmentos atendidos pelo ecossistema no longo prazo</div></div>
+        </div>
+        <div class="g2">
+          <div>
+            <ul class="styled-list">
+              <li><strong>Para o consumidor:</strong> Por <strong>R$49,90/mês</strong> (veículo popular) o assinante recebe 4L de óleo de motor + 4 filtros + inspeção veicular anual. O gasto inevitável é diluído em 12x, eliminando a "porrada" concentrada e substituindo ansiedade por previsibilidade.</li>
+              <li><strong>Para a oficina:</strong> Fluxo constante e qualificado de clientes com histórico completo do veículo. Novo argumento de fidelização diferente de preço ou indicação.</li>
+              <li><strong>Para as autopeças:</strong> Pedidos padronizados, com especificações OEM corretas via integração com a base da Rede Âncora — menos devolução, menos desperdício.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="quote-block">
+              <p>"Você me entrega o seu dinheiro diluído, mas eu vou te entregar economia, previsibilidade, um impacto menor na sua conta bancária toda vez que o carro precisar ir para a oficina. Todo mundo ganha."</p>
+              <div class="quote-source">— Luiz Portal, trecho da reunião</div>
+            </div>
+            <div class="card green" style="margin-top:12px;">
+              <div class="card-title">🎯 O Diferencial Central</div>
+              <div class="card-body">Não é um clube de descontos. É uma <strong>mudança de comportamento cultural</strong> — transformar o consumidor reativo em um consumidor preventivo. A Autocare cuida do carro <em>e</em> de quem o dirige.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sf"><div>Proposta de Valor</div><div>Modelo de receita: Assinatura recorrente + serviços extras + white label</div></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 4 — SEGMENTAÇÃO -->
+    <div class="slide" id="s4">
+      <div class="sh">
+        <div class="sh-left">
+          <div class="sh-eyebrow">Quem Atendemos</div>
+          <div class="sh-title">5 Segmentos do <em>Ecossistema Autocare</em></div>
+        </div>
+        <div class="sh-num">04 / 15</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
+        <div class="g2" style="flex:1;">
+          <div class="card">
+            <div class="card-title">🚗 Consumidor Final <span class="pill-crit">Fase 1</span></div>
+            <div class="card-body">Dono de veículo individual. O ICP (cliente ideal) é o motorista urbano de classe média que já gasta com manutenção anualmente, mas de forma reativa e concentrada. <strong>Perfis específicos:</strong> mulheres motoristas (vulneráveis a preços abusivos), homens desleixados com o carro, pais de família (segurança). A comunicação usa storytelling caricato para atingir cada perfil.</div>
+          </div>
+          <div class="card">
+            <div class="card-title">🔧 Oficinas Mecânicas <span class="pill-crit">Fase 1</span></div>
+            <div class="card-body">Parceiras operacionais do ecossistema. Recebem clientes com histórico, ganham argumento novo de fidelização e acessam um fluxo recorrente. A oficina começa como <strong>Prata</strong> (sem garantia compartilhada) e evolui para <strong>Ouro</strong> (Autocare compartilha a garantia) com base no histórico limpo de atendimento.</div>
+          </div>
+          <div class="card">
+            <div class="card-title">🛡️ Autopeças e Distribuidoras <span class="pill-alta">Fase 1-2</span></div>
+            <div class="card-body">Parceiras indiretas. A Rede Âncora — a maior base de dados de catálogo OEM do Brasil — é o parceiro-chave. A integração garante que as oficinas credenciadas façam pedidos corretos, reduzindo erros e devoluções. O ERP Cília é avaliado como parceiro tecnológico complementar.</div>
+          </div>
+          <div class="card">
+            <div class="card-title">🛡️ Associações de Proteção Veicular (APV) <span class="pill-alta">Fase 2</span></div>
+            <div class="card-body">Dois modelos: <strong>(1) Parceiro</strong> — APV indica, ganha comissão única por assinatura fechada; <strong>(2) White Label</strong> — APV opera a Autocare com sua própria marca ("Powered by Autocare"), pagando setup + mensalidade de uso do sistema. Exemplo mapeado: <strong>Aprovec</strong> (Goiânia).</div>
+          </div>
+        </div>
+        <div class="card blue" style="padding: 14px 18px;">
+          <div class="card-title">🚛 Frotistas — Autocare Fleet <span class="pill-med">Fase 3 (futura)</span></div>
+          <div class="card-body">Empresas e órgãos públicos. Marcel executou isso para Tribunal de Justiça, Agrodefesa e Era Equatorial. O gap identificado: nenhum sistema atual oferece rastreabilidade de danos por condutor nem gestão preventiva real. Requer maturidade operacional da Autocare antes de ser lançado — pré-requisito de 6 meses de operação estável.</div>
+        </div>
+      </div>
+      <div class="sf"><div>Segmentação de Clientes</div><div>ICP = Cliente Ideal por segmento · Cada segmento tem jornada, canal e contrato distintos</div></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 5 — INSPEÇÃO -->
+    <div class="slide" id="s5">
+      <div class="sh">
+        <div class="sh-left">
+          <div class="sh-eyebrow">Operação Central · Atividade-Chave #1</div>
+          <div class="sh-title">O Processo de <em>Inspeção Inicial</em> — O Coração do Negócio</div>
+        </div>
+        <div class="sh-num">05 / 15</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
+        <div class="quote-block">
+          <p>"Se ele contratar a assinatura sem ter feito uma inspeção categórica, a gente não consegue mensurar a demanda. Esse é o risco do negócio. Verde, amarelo e vermelho — em que pé está esse veículo?"</p>
+          <div class="quote-source">— Marcel, Reunião de Business Plan</div>
+        </div>
+        <div class="g3">
+          <div class="card green">
+            <div class="card-title">✅ Verde — Veículo em Dia</div>
+            <div class="card-body">Componente em bom estado. Nenhuma ação imediata necessária. O histórico é registrado para referência futura. O cliente recebe o laudo com esta classificação por WhatsApp e e-mail.</div>
+          </div>
+          <div class="card orange">
+            <div class="card-title">⚠️ Amarelo — Atenção Próxima</div>
+            <div class="card-body">Desgaste identificado com prazo de ação definido. Não é urgente, mas entra no calendário preventivo da assinatura. O plano do cliente é ajustado para cobrir a intervenção preventiva.</div>
+          </div>
+          <div class="card red">
+            <div class="card-title">🔴 Vermelho — Ação Imediata</div>
+            <div class="card-body">Problema real que precisa ser resolvido antes de qualquer cobertura do plano. Protege a Autocare de cobrir riscos pré-existentes e define o que é coparticipação versus desconto no plano contratado.</div>
+          </div>
+        </div>
+        <div class="g2">
+          <div>
+            <div class="card-title" style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:10px;">📱 O Checklist Digital — Componentes obrigatórios:</div>
+            <ul class="styled-list">
+              <li><strong>Campos descritivos por item:</strong> O mecânico descreve por texto ou áudio o que encontra em cada componente.</li>
+              <li><strong>Upload de foto por item:</strong> Evidência visual de cada ponto inspecionado, vinculada ao histórico do veículo permanentemente.</li>
+              <li><strong>Upload de vídeo curto (3 a 5 segundos):</strong> Registra folgas e barulhos que foto não captura. Armazenado por 90 dias (prazo de garantia).</li>
+              <li><strong>Laudo gerado automaticamente:</strong> Documento com todos os dados enviado por WhatsApp e e-mail ao cliente ao fim da inspeção.</li>
+            </ul>
+          </div>
+          <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <div class="card-title">🎥 Por que o vídeo importa?</div>
+              <div class="card-body" style="margin-bottom:14px;">"Contra fato não há argumento. O cliente não precisa confiar na palavra de ninguém — ele <em>vê</em> a peça mexendo, escuta o barulho, e aprova o orçamento com segurança total." — Marcel</div>
+            </div>
+            <div style="background:var(--surface3); border-radius:10px; padding:14px;">
+              <div style="font-size:11px; color:var(--green); font-weight:700; margin-bottom:6px;">ARMAZENAMENTO INTELIGENTE</div>
+              <div style="font-size:12px; color:var(--text-soft);">Vídeos ficam disponíveis por <strong style="color:#fff">90 dias</strong> — alinhado ao período legal de garantia dos componentes. Após isso, purga automática no sistema. Solução escalável via AWS ou similar.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sf"><div>Processo de Inspeção — Atividade Crítica</div><div>Toda oficina parceira é treinada para realizar a inspeção no padrão Autocare</div></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 6 — TECNOLOGIA -->
+    <div class="slide" id="s6">
+      <div class="sh">
+        <div class="sh-left">
+          <div class="sh-eyebrow">Plataforma Digital · Atividade-Chave #2</div>
+          <div class="sh-title">Site + WhatsApp como <em>Hub Tecnológico</em></div>
+        </div>
+        <div class="sh-num">06 / 15</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
+        <div class="two-panel">
+          <div class="panel-desc">
+            <div class="card green">
+              <div class="card-title">🌐 Site (via GoSites / SEBRAE)</div>
+              <div class="card-body">
+                Hub central da Autocare com:<br><br>
+                <strong>• Área do Assinante:</strong> histórico de manutenção completo, laudos de inspeção, renovação e chamados.<br>
+                <strong>• E-commerce:</strong> produtos curados (película, trava, higiene, Wheelhensing).<br>
+                <strong>• Conteúdo Educativo:</strong> artigos e vídeos sobre manutenção preventiva para posicionamento de autoridade.<br>
+                <strong>• Área Restrita para Oficinas (EAD):</strong> treinamento técnico e comercial com controle de acesso por login.
+              </div>
+            </div>
+            <div class="card blue">
+              <div class="card-title">📱 WhatsApp — O Atendimento Principal</div>
+              <div class="card-body">
+                Substitui o app nativo no curto prazo, com custo operacional muito menor e adoção imediata.<br><br>
+                <strong>• IA de Triagem Híbrida:</strong> Ao iniciar conversa, a assistente pergunta: "prefere atendimento automático ou humano?" — diferencial único de posicionamento.<br>
+                <strong>• Identificação por CPF:</strong> acesso ao histórico completo do veículo.<br>
+                <strong>• Custo de mensagem:</strong> A Autocare só paga quando <em>inicia</em> a conversa; quando o cliente abre o chamado, a resposta não tem custo adicional.
+              </div>
+            </div>
+          </div>
+          <div class="panel-visual">
+            <div class="card">
+              <div class="card-title">🤖 Assistente de IA Integrado</div>
+              <div class="card-body">A assistente virtual da Autocare (com nome e persona definidos — voz e tom próprios) responde dúvidas sobre uso do sistema, agendamentos e informações do veículo <strong>sem precisar de atendente humano</strong> para casos simples. O exemplo citado na reunião: um aluno que queria cancelar um serviço foi <em>retido</em> pelo assistente de IA com uma solução alternativa em segundos.</div>
+            </div>
+            <div class="card">
+              <div class="card-title">📅 Agendamento Online</div>
+              <div class="card-body">Integração de calendário entre a plataforma Autocare e as oficinas credenciadas. O cliente agenda a inspeção ou o serviço preventivo diretamente pela interface — sem necessidade de ligar para a oficina.</div>
+            </div>
+            <div class="card">
+              <div class="card-title">📊 Integração Rede Âncora / Cília</div>
+              <div class="card-body">Acesso ao catálogo de peças por placa e chassi diretamente na plataforma da oficina. A Rede Âncora tem <strong>a maior base OEM do Brasil</strong>. Resultado: pedidos corretos, zero devolução desnecessária, relacionamento mais profissional com distribuidoras.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sf"><div>Plataforma Digital</div><div>App nativo: decisão tomada de postergar para Fase 3 · WhatsApp + Site cobrem o necessário inicialmente</div></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 7 — PARCEIROS-CHAVE -->
+    <div class="slide" id="s7">
+      <div class="sh">
+        <div class="sh-left">
+          <div class="sh-eyebrow">Estrutura de Parceiros</div>
+          <div class="sh-title">Parceiros-Chave do <em>Ecossistema</em></div>
+        </div>
+        <div class="sh-num">07 / 15</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:12px;">
+        <div class="g2">
+          <div class="card green">
+            <div class="card-title">⚓ Rede Âncora — Dados de Peças <span class="pill-crit">Estratégico</span></div>
+            <div class="card-body">Maior base de dados de catálogo OEM do Brasil. Permite que as oficinas credenciadas façam pedidos com especificação correta por placa e chassi — reduzindo retrabalho, devoluções e conflitos. Potencial de integração via API ou licenciamento da base. Também é canal de prospecção de oficinas em novas cidades (capilaridade nacional).</div>
+          </div>
+          <div class="card green">
+            <div class="card-title">💻 Cília (ERP de Frota) — Parceiro Tecnológico <span class="pill-alta">Alta</span></div>
+            <div class="card-body">Sistema ERP já utilizado pelas maiores gerenciadoras de frota do Brasil. A Autocare pode integrá-lo como base tecnológica da fase Fleet, trazendo o diferencial da gestão preventiva ao que hoje é apenas controle financeiro. Marcel possui relacionamento direto com a empresa.</div>
+          </div>
+          <div class="card">
+            <div class="card-title">🏛️ SEBRAE — Parceiro de Viabilização <span class="pill-crit">Imediato</span></div>
+            <div class="card-body"><strong>Fábio (SEBRAE):</strong> contratação do escritório para registro de marca no INPI + desenvolvimento da identidade visual. A Pneucália (parceiro apontado) é Microempresa no Simples Nacional — encaixa no perfil de contratação via SEBRAE. <strong>GoSites:</strong> desenvolvimento do site com e-commerce a custo reduzido.</div>
+          </div>
+          <div class="card">
+            <div class="card-title">📺 Capital Mídias (Wagner) — Mídia OOH <span class="pill-alta">Imediato</span></div>
+            <div class="card-body">Uma das maiores empresas de mídia exterior do Centro-Oeste. Luiz Portal tem relacionamento de mais de 20 anos com o sócio Wagner. <strong>Proposta de permuta:</strong> a Autocare realiza manutenção dos carros dos sócios e da frota da empresa em troca de espaços em outdoor, front light e painel de LED em pontos estratégicos de Goiânia.</div>
+          </div>
+        </div>
+        <div class="g3">
+          <div class="card blue">
+            <div class="card-title">🔊 Juninho Autossom — Indicação</div>
+            <div class="card-body">Parceiro de indicação. Loja de som automotivo indica a Autocare para sua base de clientes via link rastreável exclusivo. Recebe comissão única por assinatura fechada. Futuramente: vouchers para clientes Autocare usarem na loja.</div>
+          </div>
+          <div class="card blue">
+            <div class="card-title">🔵 Wheelhensing — Clube de Benefícios</div>
+            <div class="card-body">Sistema de vedação de pneus avulsos. Parceiro de e-commerce e conteúdo. Aparece como parceiro em spots de vídeo de storytelling (roteiro específico da reunião: cena do pneu furado). Co-branding natural com a proposta de valor.</div>
+          </div>
+          <div class="card blue">
+            <div class="card-title">🏢 Aprovec — APV Parceira</div>
+            <div class="card-body">Associação de Proteção Veicular de Goiânia mapeada para o modelo white label. Já oferece benefícios de desconto em oficinas para seus membros — a Autocare entra como produto premium nos planos superiores.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sf"><div>Parceiros-Chave</div><div>Nova Suíça Veículos (revendas), BNI, Amazon (storage), Lava-jatos e estéticas automotivas também mapeados</div></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 8 — PLANOS E PRECIFICAÇÃO -->
+    <div class="slide" id="s8">
+      <div class="sh">
+        <div class="sh-left">
+          <div class="sh-eyebrow">Modelo de Receita</div>
+          <div class="sh-title">Planos de Assinatura e <em>Fontes de Receita</em></div>
+        </div>
+        <div class="sh-num">08 / 15</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
+        <div class="g4">
+          <div class="big-stat"><div class="big-stat-val">R$59,90</div><div class="big-stat-label">Essential<br>1 troca de óleo + 1 inspeção/ano</div></div>
+          <div class="big-stat"><div class="big-stat-val">Plus</div><div class="big-stat-label">Descontos progressivos + mais itens preventivos incluídos</div></div>
+          <div class="big-stat"><div class="big-stat-val">Premium</div><div class="big-stat-label">Descontos máximos + benefícios de clube + cobertura ampliada</div></div>
+          <div class="big-stat"><div class="big-stat-val">Fleet</div><div class="big-stat-label">Produto B2B para frotas com gestão preventiva por condutor</div></div>
+        </div>
+        <div class="g2">
+          <div>
+            <div class="card-title" style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:10px;">🔁 Como funciona a coparticipação:</div>
+            <ul class="styled-list">
+              <li><strong>Plano Essential (Veículo Popular) — R$49,90/mês:</strong> <span style="color:var(--green); font-weight:600;">✅ Confirmado por Marcel</span> — Inclui 4 litros de óleo de motor + 4 filtros + inspeção veicular anual. Para veículos de maior cilindrada a tendência é valor superior (a definir nas próximas reuniões).</li>
+              <li><strong>Planos superiores:</strong> Descontos progressivos sobre mão de obra e peças. Quanto maior o plano, maior o percentual de desconto.</li>
+              <li><strong>A inspeção define o escopo:</strong> O que é coparticipação, o que vira desconto e o que é orçamento separado — tudo baseado no laudo inicial.</li>
+              <li><strong>White Label para APVs:</strong> Setup único (implantação cobrada) + mensalidade de uso do sistema.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="card-title" style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:10px;">💰 Todas as fontes de receita mapeadas:</div>
+            <ul class="styled-list">
+              <li><strong>Assinaturas mensais</strong> — receita recorrente e previsível.</li>
+              <li><strong>Serviços extras</strong> — mão de obra além do plano, com desconto.</li>
+              <li><strong>E-commerce de produtos</strong> — itens curados (segurança, higiene, gadgets, Wheelhensing).</li>
+              <li><strong>White label para APVs</strong> — setup + mensalidade de operação do sistema.</li>
+              <li><strong>Anúncio de parceiros</strong> (fase futura) — parceiros pagam para aparecer na plataforma.</li>
+              <li><strong>Comissão de indicação reversa</strong> — a Autocare direciona clientes para parceiros e cobra pela visibilidade.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="sf"><div>Modelo de Receita</div><div>Precificação final dos planos e white label APV: ação pendente definida para reunião seguinte</div></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 9 — AQUISIÇÃO DE OFICINAS -->
+    <div class="slide" id="s9">
+      <div class="sh">
+        <div class="sh-left">
+          <div class="sh-eyebrow">Expansão Operacional</div>
+          <div class="sh-title">Credenciamento de Oficinas: <em>Como Convencer, Treinar e Fidelizar</em></div>
+        </div>
+        <div class="sh-num">09 / 15</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
+        <div class="timeline-h">
+          <div class="tl-step">
+            <div class="tl-step-num">PASSO 1</div>
+            <div class="tl-step-label">Prospecção Ativa</div>
+            <div class="tl-step-body">Via rede de contatos (Marcel, Luiz, BNI) e parceria com Rede Âncora (acesso à lista de oficinas que já compram dela).</div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-num">PASSO 2</div>
+            <div class="tl-step-label">Pitch de Valor</div>
+            <div class="tl-step-body">"A Autocare te traz cliente com histórico e um novo motivo de fidelização que você não tem sozinho." Foco no benefício, não no produto.</div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-num">PASSO 3</div>
+            <div class="tl-step-label">Validação Técnica</div>
+            <div class="tl-step-body">Confirmar estrutura física mínima, capacidade de atendimento, abertura para padronização e uso do sistema digital.</div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-num">PASSO 4</div>
+            <div class="tl-step-label">Contrato e Credenciamento</div>
+            <div class="tl-step-body">Assinatura do contrato de credenciamento Prata. Inclui SLA de atendimento mínimo que precisa ser cumprido.</div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-num">PASSO 5</div>
+            <div class="tl-step-label">Treinamento EAD</div>
+            <div class="tl-step-body">Módulos técnico e comercial dentro da área restrita do site. Vídeos, contra-objeções e como usar o checklist digital.</div>
+          </div>
+        </div>
+        <div class="g2">
+          <div>
+            <div class="card-title" style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:10px;">🏆 Sistema de Classificação de Oficinas:</div>
+            <ul class="styled-list">
+              <li><strong>Prata:</strong> Entrada. Responsabilidade de garantia 100% da oficina. Acesso ao sistema, treinamento e fluxo de clientes Autocare.</li>
+              <li><strong>Ouro:</strong> Evolução. Autocare compartilha a garantia. Exige histórico limpo de atendimento e auditoria de sinistralidade. Maior prestígio e volume de clientes.</li>
+            </ul>
+            <div class="quote-block" style="margin-top:12px;">
+              <p>"Quando ela começa a usar e a gente tem volume de oficina usando, aí inverte — ela não pode sair. Porque ela já viu que está funcionando e se ela sair, perde o que construiu."</p>
+              <div class="quote-source">— Luiz Portal, sobre efeito de lock-in natural</div>
+            </div>
+          </div>
+          <div>
+            <div class="card-title" style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:10px;">💎 Fidelização de Mecânicos e Donos:</div>
+            <ul class="styled-list">
+              <li><strong>Programa de Pontuação para Mecânicos:</strong> Modelo inspirado no Ipiranga — o mecânico ganha bônus por cada assinante indicado. Fator multiplicador se o serviço incluir itens premium.</li>
+              <li><strong>Programa para Donos de Oficina:</strong> Indicar outra oficina credenciada gera isenção de mensalidade ou benefício equivalente por 6 meses.</li>
+              <li><strong>Customer Success dedicado:</strong> Cada CS cuida de uma carteira de oficinas de forma proativa — liga, visita, apoia. Não é SAC reativo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="sf"><div>Credenciamento de Oficinas</div><div>Meta do piloto: 5 a 10 oficinas em Goiânia · Referência de modelo: Bosch (placa licenciada sem custo de centro)</div></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 10 — COMUNICAÇÃO -->
+    <div class="slide" id="s10">
+      <div class="sh">
+        <div class="sh-left">
+          <div class="sh-eyebrow">Estratégia de Marca</div>
+          <div class="sh-title">O Adesivo, o Jingle e o <em>Storytelling Cinematográfico</em></div>
+        </div>
+        <div class="sh-num">10 / 15</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
+        <div class="g2">
+          <div>
+            <div class="card green">
+              <div class="card-title">🎵 A Identidade Sonora — "Tadã!"</div>
+              <div class="card-body">
+                A marca precisa ter um <strong>som característico</strong> — um jingle próprio. Quando o cliente cola o adesivo Autocare na traseira do carro, o carro "pisca" e emite o som da marca. A partir daí, a pessoa sente que seu carro está protegido.<br><br>
+                <em>"Ele não pode distoar. Se você colocar de um lado, do outro ou no centro do vidro traseiro, ele tem que funcionar. É quesito de marca — funcionar com animação e com som específico."</em>
+              </div>
+            </div>
+            <div class="card" style="margin-top:12px;">
+              <div class="card-title">📌 O Adesivo na Oficina</div>
+              <div class="card-body">Proposta da reunião: quando um cliente Autocare chega em uma oficina credenciada, um sinal sonoro toca no sistema da oficina (como um chamado de atenção), sinalizando que há um protocolo específico para esse cliente — histórico, plano, descontos.</div>
+            </div>
+          </div>
+          <div>
+            <div class="card-title" style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:10px;">🎬 Roteiros Cinematográficos Definidos na Reunião:</div>
+            <ul class="styled-list">
+              <li><strong>O Homem que Colou o Adesivo:</strong> Herói que enfrenta a mesma cena com e sem a Autocare — o carro quebra e tudo se resolve com leveza ("segue sua vida em paz"). Sem adesivo: caminhão, lâmina, mecânico bêbado.</li>
+              <li><strong>A Mulher na Oficina:</strong> Mecânico caricato tenta aplicar preço abusivo com termos técnicos inventados. Com Autocare: atendente explica com clareza, mostra histórico, aplica desconto especial para mulheres — "Desconto da Confiança Autocare".</li>
+              <li><strong>O Homem Desleixado:</strong> Cara que trata o carro mal até ter um susto. Contraste com o "cliente protegido" que vive tranquilo.</li>
+            </ul>
+            <div class="card blue" style="margin-top:12px;">
+              <div class="card-title">💡 Por que Storytelling?</div>
+              <div class="card-body">"Depoimentos de clientes não impactam mais. Todo site tem. A propaganda tem que ser <strong>gostada</strong>, tem que ter sentido. A gente vai ser o Netflix das caricaturas do cotidiano automotivo brasileiro." — Luiz Portal</div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="padding:14px 18px;">
+          <div class="card-title">📲 Padrão de Divulgação para Oficinas Parceiras</div>
+          <div class="card-body">Templates prontos de stories e posts com a marca Autocare aplicada. A Autocare pode gerar vídeos por IA que inserem a fachada da oficina parceira com um personagem da marca "falando" na frente — impulsionamento de R$30 a R$500 pago pela Autocare: é investimento de marketing, não custo, porque a oficina veicula a marca Autocare para a própria base.</div>
+        </div>
+      </div>
+      <div class="sf"><div>Estratégia de Comunicação</div><div>Produtora de vídeo com IA generativa a ser contratada · Demo/trailer dos spots: ação imediata de Luiz + Cléber</div></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 11 — CANAIS E DISTRIBUIÇÃO -->
+    <div class="slide" id="s11">
+      <div class="sh">
+        <div class="sh-left">
+          <div class="sh-eyebrow">Aquisição de Clientes</div>
+          <div class="sh-title">Canais de Distribuição e <em>Ativação de Parceiros</em></div>
+        </div>
+        <div class="sh-num">11 / 15</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
+        <div class="g3">
+          <div class="card green">
+            <div class="card-title">🏪 Canal Loja (Oficinas Credenciadas)</div>
+            <div class="card-body">
+              A oficina é o canal físico principal. Cada oficina credenciada recebe:<br>
+              • Banner e display de balcão com QR Code;<br>
+              • Enxoval de marca (placa licenciada na fachada, similar ao modelo Bosch);<br>
+              • Templates prontos de redes sociais;<br>
+              • Possibilidade de inserção de logo no uniforme.<br><br>
+              Pelo canal WhatsApp da oficina (com LGPD respeitada), a Autocare pode disparar mensagens para a base da oficina via bot — o <em>cliente inicia</em>, a Autocare responde.
+            </div>
+          </div>
+          <div class="card blue">
+            <div class="card-title">📱 Canal Digital (Redes Sociais Próprias)</div>
+            <div class="card-body">
+              Instagram, TikTok e YouTube como canais orgânicos de storytelling. A estratégia foge completamente do padrão "pitch comercial genérico".<br><br>
+              Cada série de vídeos é criada por segmento: mulheres, homens, famílias, conscientes vs. desleixados — cada nicho tem sua sequência de chamada + depoimentos reais de clientes do mesmo perfil para reforçar.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">🤝 Canal Parceiros Indicadores</div>
+            <div class="card-body">
+              Lava-jatos, estéticas automotivas, lojas de som e película como pontos de captação passiva.<br><br>
+              <strong>Modelo inicial:</strong> Parceiro gratuito — indica, recebe comissão única, ganha novos clientes Autocare direcionados para o seu negócio.<br><br>
+              <strong>Modelo futuro:</strong> Parceiro pago — aparece na plataforma Autocare com destaque e vouchers para assinantes.
+            </div>
+          </div>
+        </div>
+        <div class="g2">
+          <div class="card orange">
+            <div class="card-title">🏢 Canal APV (Associações de Proteção Veicular)</div>
+            <div class="card-body">Alta alavancagem: as APVs já têm base de clientes com veículo, já oferecem benefícios, e têm credibilidade. <strong>A Autocare entra como benefício premium</strong> nos planos superiores — o cliente ganha o primeiro mês grátis via voucher da APV. Dois modelos: parceiro (comissão) ou white label (sistema próprio).</div>
+          </div>
+          <div class="card orange">
+            <div class="card-title">📺 Canal OOH — Capital Mídias</div>
+            <div class="card-body">Wagner (Capital Mídias) é contato estratégico de Luiz Portal há 20 anos. Frota pessoal dos sócios e da empresa como objeto de permuta. A Autocare presta manutenção preventiva e recebe em troca <strong>espaços em outdoor, front light e painéis de LED</strong> próximos a oficinas parceiras, postos e saídas de condomínios. Baixo custo, alto impacto visual.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sf"><div>Canais e Distribuição</div><div>BNI como canal comunitário em avaliação · Link rastreável por parceiro para atribuição precisa de conversão</div></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 12 — CLUBE DE BENEFÍCIOS -->
+    <div class="slide" id="s12">
+      <div class="sh">
+        <div class="sh-left">
+          <div class="sh-eyebrow">Expansão do Ecossistema · Fase 5</div>
+          <div class="sh-title">Clube de Benefícios, E-commerce e <em>Autocare Fleet</em></div>
+        </div>
+        <div class="sh-num">12 / 15</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
+        <div class="g2">
+          <div>
+            <div class="card green">
+              <div class="card-title">🛍️ E-commerce e Clube de Benefícios</div>
+              <div class="card-body">
+                O site evolui para um hub completo de produtos e vantagens ligados ao cuidado com o veículo e à segurança de quem dirige. Coerente com o posicionamento: <em>"Se a Autocare cuida do seu carro e de você, ela também indica e vende o que protege você."</em><br><br>
+                <strong>Produtos iniciais mapeados:</strong> sistema de vedação de pneus (Wheelhensing), película de segurança, gadgets de proteção, protetor de cinto para crianças, higiene automotiva.<br><br>
+                <strong>Programa de fidelidade gamificado:</strong> O cliente escolhe o próprio modelo de recompensa — cashback, desconto, pontos ou brinde. Renovação de assinatura gera benefício escolhido pelo assinante.
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="card blue">
+              <div class="card-title">🚛 Autocare Fleet — Gestão de Frotas Corporativas</div>
+              <div class="card-body">
+                <strong>O gap identificado por Marcel</strong> (e validado com Tribunal de Justiça, Agrodefesa e Era Equatorial): sistemas existentes controlam somente o custo financeiro da frota, não a <em>manutenção preventiva</em> nem a <em>rastreabilidade por condutor</em>.<br><br>
+                <strong>Diferencial da Autocare Fleet:</strong><br>
+                • Checklist de entrada e saída por condutor;<br>
+                • Rastreabilidade de danos por responsável;<br>
+                • Gestão preventiva por quilometragem e tempo;<br>
+                • Relatórios para gestor sobre recorrência de problema por motorista.<br><br>
+                <strong>Pré-requisito:</strong> 6 meses de operação estável do core Autocare.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quote-block">
+          <p>"Nenhuma dessas empresas tem essa informação que eu estou te falando. Isso que estou descrevendo — esse tipo de dados — nenhuma delas tem. Eu sou categórico. Fiz para o Tribunal de Justiça, Agrodefesa, Era Equatorial. Não tem. É uma oportunidade."</p>
+          <div class="quote-source">— Marcel, sobre o gap no mercado de gestão de frotas</div>
+        </div>
+        <div class="card" style="padding:14px 18px;">
+          <div class="card-title">🗺️ Expansão Regional — Modelo Cooperativa</div>
+          <div class="card-body">Goiânia é o mercado de validação. A expansão segue o modelo da Unimed: cobertura local (plano regional) vs. cobertura nacional (plano nacional, valor maior). A Rede Âncora é o canal de prospecção de oficinas em novas cidades — capilaridade nacional já existente.</div>
+        </div>
+      </div>
+      <div class="sf"><div>Fase 5 — Expansão</div><div>Fleet: abordagem B2B consultiva com nível executivo (diretor de TI ou proprietário) · Parceria Cília como possível co-investidor</div></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 13 — ESTRUTURA JURÍDICA -->
+    <div class="slide" id="s13">
+      <div class="sh">
+        <div class="sh-left">
+          <div class="sh-eyebrow">Fundação Legal</div>
+          <div class="sh-title">Estrutura Jurídica e <em>Contratos Necessários</em></div>
+        </div>
+        <div class="sh-num">13 / 15</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Tipo de Contrato</th>
+                <th>Partes Envolvidas</th>
+                <th>Pontos Críticos</th>
+                <th>Prioridade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Assinatura do Cliente Final</strong></td>
+                <td>Autocare ↔ Consumidor</td>
+                <td>Um por tipo de plano. Cláusulas de LGPD, propriedade dos dados do veículo, termos de uso da plataforma.</td>
+                <td><span class="pill-crit">CRÍTICA</span></td>
+              </tr>
+              <tr>
+                <td><strong>Credenciamento de Oficina</strong></td>
+                <td>Autocare ↔ Oficina Parceira</td>
+                <td>SLA mínimo de atendimento, regras de garantia (Prata/Ouro), exclusividade de uso do checklist, confidencialidade.</td>
+                <td><span class="pill-crit">CRÍTICA</span></td>
+              </tr>
+              <tr>
+                <td><strong>White Label para APV</strong></td>
+                <td>Autocare ↔ Associação de Proteção Veicular</td>
+                <td>Valor de setup (implantação), mensalidade de operação, propriedade da carteira de clientes, responsabilidade por atendimento.</td>
+                <td><span class="pill-crit">CRÍTICA</span></td>
+              </tr>
+              <tr>
+                <td><strong>Parceria Comercial (Indicadores)</strong></td>
+                <td>Autocare ↔ Lava-jatos, Parceiros</td>
+                <td>Comissão única por assinatura fechada (não recorrente), link rastreável, políticas de LGPD para compartilhamento de leads.</td>
+                <td><span class="pill-alta">ALTA</span></td>
+              </tr>
+              <tr>
+                <td><strong>Autocare Fleet (Futuro)</strong></td>
+                <td>Autocare ↔ Frotistas</td>
+                <td>Contrato de gestão B2B, SLA de resposta, relatórios de condutor, confidencialidade de dados operacionais.</td>
+                <td><span class="pill-med">FASE 3</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="g2">
+          <div class="card">
+            <div class="card-title">🔒 Registro de Marca no INPI <span class="pill-crit">Urgente</span></div>
+            <div class="card-body">A marca Autocare é o ativo central de todo o negócio. Sem registro, a operação inteira fica vulnerável. Registrar nas classes NCL de: serviços de manutenção de veículos, plataformas digitais e assinaturas, e <strong>Autocare Fleet</strong> (classe de gestão de frotas) — tudo desde o início.</div>
+          </div>
+          <div class="card">
+            <div class="card-title">📋 Termos Digitais</div>
+            <div class="card-body">Política de privacidade alinhada à LGPD, termos de uso da plataforma digital e cláusulas específicas sobre propriedade dos dados históricos do veículo (quem pode acessar, por quanto tempo, e o que acontece em caso de cancelamento da assinatura).</div>
+          </div>
+        </div>
+      </div>
+      <div class="sf"><div>Estrutura Jurídica</div><div>Departamento jurídico interno da Live Consultoria conduzirá a elaboração dos contratos · SEBRAE (Fábio) como suporte externo</div></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 14 — RISCOS -->
+    <div class="slide" id="s14">
+      <div class="sh">
+        <div class="sh-left">
+          <div class="sh-eyebrow">Gestão de Riscos · Gap Analysis</div>
+          <div class="sh-title">Pontos de Atenção e <em>Soluções Preventivas</em></div>
+        </div>
+        <div class="sh-num">14 / 15</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:12px;">
+        <div class="g2">
+          <div class="card red">
+            <div class="card-title">⚠️ LGPD e Ativação da Base das Oficinas</div>
+            <div class="card-body">
+              <strong>Risco:</strong> A Autocare não pode solicitar às oficinas suas bases de clientes para enviar mensagens em nome da Autocare. Isso viola a LGPD.<br><br>
+              <strong>Solução:</strong> A oficina dispara o primeiro contato pela sua própria conta de WhatsApp. O cliente clica em um link da Autocare, aceita os termos e se cadastra voluntariamente. A partir daí, a Autocare tem base legal para se comunicar com ele.
+            </div>
+          </div>
+          <div class="card red">
+            <div class="card-title">⚠️ Qualidade das Oficinas e Garantia</div>
+            <div class="card-body">
+              <strong>Risco:</strong> Uma oficina mal credenciada executa um serviço ruim. O cliente aciona a Autocare. A responsabilidade recai sobre a marca — não sobre a oficina.<br><br>
+              <strong>Solução:</strong> Fase Prata: 100% da responsabilidade de garantia é da oficina. Só evolui para Ouro (garantia compartilhada) após auditoria de sinistralidade e histórico limpo. Critérios rígidos de credenciamento.
+            </div>
+          </div>
+          <div class="card orange">
+            <div class="card-title">⚠️ Custo de Armazenamento de Vídeos</div>
+            <div class="card-body">
+              <strong>Risco:</strong> Em escala, vídeos de 3 a 5 segundos de cada inspeção de cada veículo geram custo crescente de infraestrutura em nuvem.<br><br>
+              <strong>Solução:</strong> Purga automática programada exatamente no 90º dia (alinhada ao prazo legal de garantia do componente). Apenas metadados, fotos leves e o laudo em texto ficam no histórico permanente. AWS S3 com lifecycle policy.
+            </div>
+          </div>
+          <div class="card orange">
+            <div class="card-title">⚠️ Escopo de Cobertura por Veículo</div>
+            <div class="card-body">
+              <strong>Risco:</strong> Assinar um cliente sem inspeção prévia e depois precisar cobrir manutenções de problemas pré-existentes — risco financeiro não calculado.<br><br>
+              <strong>Solução:</strong> A inspeção inicial é <em>obrigatória</em> antes de ativar qualquer plano. O laudo define o que o plano cobre, o que é desconto e o que é orçamento à parte. Sem inspeção, sem ativação.
+            </div>
+          </div>
+        </div>
+        <div class="card" style="padding:14px 18px; border-color: rgba(0,232,0,0.3); background: rgba(0,232,0,0.03);">
+          <div class="card-title" style="color:var(--green);">✅ Oportunidade: Evitar a Concorrência Interna entre Oficinas</div>
+          <div class="card-body">A modelagem Prata/Ouro evita que as oficinas se vejam como concorrentes entre si dentro do ecossistema. Cada uma tem sua carteira geográfica de clientes. O nível de confiança cresce progressivamente — e o lock-in é natural: a oficina que sair perde tudo o que construiu de histórico e reputação dentro do sistema.</div>
+        </div>
+      </div>
+      <div class="sf"><div>Análise de Riscos</div><div>Todos os riscos identificados têm solução operacional mapeada e viável</div></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 15 — AÇÕES IMEDIATAS -->
+    <div class="slide" id="s15">
+      <div class="sh">
+        <div class="sh-left">
+          <div class="sh-eyebrow">Próximos Passos · Semana 1</div>
+          <div class="sh-title">10 Ações Imediatas para <em>Tirar do Papel</em></div>
+        </div>
+        <div class="sh-num">15 / 15</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:10px;">
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Ação</th>
+                <th>Responsável</th>
+                <th>Finalidade</th>
+                <th>Prioridade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>01</strong></td>
+                <td>Verificar no INPI e protocolar registro da marca Autocare + Autocare Fleet</td>
+                <td>Luiz Portal + Fábio (SEBRAE)</td>
+                <td>Garantir o ativo central. Sem isso, a operação fica vulnerável.</td>
+                <td><span class="pill-crit">CRÍTICA</span></td>
+              </tr>
+              <tr>
+                <td><strong>02</strong></td>
+                <td>Garantir handles @autocare no Instagram, TikTok e YouTube + domínio autocare.com.br</td>
+                <td>Cléber Donato</td>
+                <td>Assegurar a identidade digital antes de terceiros</td>
+                <td><span class="pill-crit">CRÍTICA</span></td>
+              </tr>
+              <tr>
+                <td><strong>03</strong></td>
+                <td>Briefar designer Fábio com conceito completo de identidade visual (adesivo, animação, jingle)</td>
+                <td>Luiz Portal</td>
+                <td>A marca precisa funcionar em adesivo, uniforme, banner e animação simultâneos</td>
+                <td><span class="pill-crit">CRÍTICA</span></td>
+              </tr>
+              <tr>
+                <td><strong>04</strong></td>
+                <td>Produzir demo/trailer dos spots cinematográficos para alinhar direção criativa</td>
+                <td>Luiz Portal + Cléber Donato</td>
+                <td>Validar a pegada visual da marca antes de contratar produtora</td>
+                <td><span class="pill-crit">CRÍTICA</span></td>
+              </tr>
+              <tr>
+                <td><strong>05</strong></td>
+                <td>Agendar reunião com Wagner da Capital Mídias para propor permuta</td>
+                <td>Luiz Portal</td>
+                <td>Confirmar parceria de mídia OOH sem custo de veiculação</td>
+                <td><span class="pill-alta">ALTA</span></td>
+              </tr>
+              <tr>
+                <td><strong>06</strong></td>
+                <td>Luiz envia plano de negócio documentado para Marcel revisar e preencher lacunas técnicas</td>
+                <td>Luiz Portal → Marcel</td>
+                <td>Validar os detalhes operacionais antes da próxima reunião</td>
+                <td><span class="pill-alta">ALTA</span></td>
+              </tr>
+              <tr>
+                <td><strong>07</strong></td>
+                <td>Mapear e iniciar estrutura jurídica — tipos de contrato necessários</td>
+                <td>Cléber Donato</td>
+                <td>Estrutura legal base antes do primeiro parceiro ou assinante</td>
+                <td><span class="pill-alta">ALTA</span></td>
+              </tr>
+              <tr>
+                <td><strong>08</strong></td>
+                <td>Definir lista final dos planos de assinatura e precificar cada um</td>
+                <td>Luiz + Marcel + Cléber</td>
+                <td>Fechar a matemática de receita e margem por plano</td>
+                <td><span class="pill-alta">ALTA</span></td>
+              </tr>
+              <tr>
+                <td><strong>09</strong></td>
+                <td>Preparar proposta dupla para APVs (parceiro + white label) com Aprovec como alvo</td>
+                <td>Luiz Portal + Cléber Donato</td>
+                <td>Ativar canal de alta alavancagem desde o início</td>
+                <td><span class="pill-alta">ALTA</span></td>
+              </tr>
+              <tr>
+                <td><strong>10</strong></td>
+                <td>Agendar próximo encontro com pauta fechada: precificação, white label APV, contratos</td>
+                <td>Luiz Portal</td>
+                <td>Manter cadência e não perder o momentum da reunião de business plan</td>
+                <td><span class="pill-alta">ALTA</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="sf" style="margin-top:auto;"><div>Autocare · Plano de Ação v1.0 — Maio 2026</div><div>Live Consultoria · Luiz Portal · Cléber Donato · LUIZ E A PORTAL — CNPJ 52.887.139/0001-00</div></div>
+      </div>
+    </div>
+
+  </div><!-- /deck-inner -->
+</div><!-- /deck-wrap -->
+
+<div class="controls">
+  <button class="nav-btn" id="prev-btn" disabled>← Anterior</button>
+  <div class="progress-area">
+    <div class="progress-dots" id="dots"></div>
+  </div>
+  <span class="slide-counter"><span id="curr">1</span> / 15</span>
+  <button class="nav-btn primary" id="next-btn" style="margin-left:14px;">Próximo →</button>
+</div>
+
+<script>
+  const slides     = document.querySelectorAll('.slide');
+  const prevBtn    = document.getElementById('prev-btn');
+  const nextBtn    = document.getElementById('next-btn');
+  const currEl     = document.getElementById('curr');
+  const dotsWrap   = document.getElementById('dots');
+  const TOTAL      = slides.length;
+  let current      = 0;
+
+  // Criar pontos
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.title = `Slide ${i + 1}`;
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  }
+
+  function goTo(idx) {
+    if (idx === current) return;
+    slides[current].classList.remove('active');
+    slides[current].classList.add('exit-left');
+    setTimeout(() => slides[current - (idx > current ? 0 : 0)].classList.remove('exit-left'), 450);
+    current = idx;
+    slides[current].classList.add('active');
+    slides[current].scrollTop = 0;
+    update();
+  }
+
+  function update() {
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+    currEl.textContent = current + 1;
+    prevBtn.disabled = current === 0;
+    nextBtn.textContent = current === TOTAL - 1 ? '↺ Recomeçar' : 'Próximo →';
+  }
+
+  prevBtn.addEventListener('click', () => { if (current > 0) goTo(current - 1); });
+  nextBtn.addEventListener('click', () => goTo(current === TOTAL - 1 ? 0 : current + 1));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ')  { e.preventDefault(); nextBtn.click(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); prevBtn.click(); }
+  });
+
+  update();
+</script>
+</body>
+</html>

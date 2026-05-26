@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apresentações — Autocare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #06192a;
+      --surface:  #0d2840;
+      --surface2: #143655;
+      --border:   rgba(255,255,255,0.08);
+      --green:    #00e800;
+      --green-dim:#00b300;
+      --text:     #ffffff;
+      --text-soft:#b5c5d3;
+      --font:     'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo-mark {
+      background: var(--green);
+      color: var(--bg);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: .05em;
+    }
+    header h1 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    header span.sep { color: var(--border); margin: 0 6px; }
+    header span.sub { font-size: 14px; color: var(--text-soft); font-weight: 400; }
+    header .badge {
+      margin-left: auto;
+      background: rgba(0,232,0,.12);
+      border: 1px solid rgba(0,232,0,.3);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 60px 40px 40px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .hero h2 {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .hero h2 span { color: var(--green); }
+    .hero p {
+      font-size: 15px;
+      color: var(--text-soft);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── Stats bar ── */
+    .stats {
+      max-width: 960px;
+      margin: 0 auto 40px;
+      padding: 0 40px;
+      display: flex;
+      gap: 24px;
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 24px;
+      flex: 1;
+    }
+    .stat-val { font-size: 28px; font-weight: 700; color: var(--green); }
+    .stat-label { font-size: 12px; color: var(--text-soft); margin-top: 2px; }
+
+    /* ── Grid ── */
+    .grid {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── Empty state ── */
+    .empty {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+    .empty-card {
+      background: var(--surface);
+      border: 1px dashed rgba(0,232,0,.3);
+      border-radius: 14px;
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .empty-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      opacity: .6;
+    }
+    .empty-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .empty-card p {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.7;
+      max-width: 400px;
+      margin: 0 auto 24px;
+    }
+    .empty-card code {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 18px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: var(--green);
+      display: inline-block;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: border-color .2s, transform .2s;
+    }
+    .card:hover {
+      border-color: var(--green-dim);
+      transform: translateY(-2px);
+    }
+    .card-thumb {
+      height: 140px;
+      background: linear-gradient(135deg, var(--surface2) 0%, var(--bg) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .card-body { padding: 18px 20px; flex: 1; }
+    .card-date { font-size: 11px; color: var(--green); font-weight: 600; letter-spacing:.04em; margin-bottom: 6px; }
+    .card-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
+    .card-desc { font-size: 13px; color: var(--text-soft); line-height: 1.6; }
+    .card-footer {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .card-version { font-size: 11px; color: var(--text-soft); }
+    .card-arrow {
+      width: 28px; height: 28px;
+      background: rgba(0,232,0,.1);
+      border: 1px solid rgba(0,232,0,.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      color: var(--green);
+      transition: background .2s;
+    }
+    .card:hover .card-arrow { background: rgba(0,232,0,.2); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 28px 40px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+    footer strong { color: var(--green); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-mark">AUTOCARE</div>
+    <h1>Apresentações<span class="sep">|</span><span class="sub">Live Consultoria</span></h1>
+    <div class="badge">● Ativo</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-label">Materiais de Apresentação</div>
+    <h2>Ecossistema <span>Autocare</span></h2>
+    <p>Repositório central das apresentações geradas pela Live Consultoria para o cliente Autocare. Cada documento representa uma etapa da jornada de consultoria.</p>
+  </section>
+
+  <section class="stats">
+    <div class="stat">
+      <div class="stat-val" id="count">0</div>
+      <div class="stat-label">Apresentações publicadas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">2026</div>
+      <div class="stat-label">Início do projeto</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">Live</div>
+      <div class="stat-label">Consultoria responsável</div>
+    </div>
+  </section>
+
+  <!-- Quando não há apresentações -->
+  <section class="empty" id="empty-state">
+    <div class="empty-card">
+      <div class="empty-icon">📊</div>
+      <h3>Nenhuma apresentação publicada ainda</h3>
+      <p>As apresentações aparecerão aqui à medida que forem geradas ao longo da consultoria. O próximo passo é o diagnóstico inicial da Autocare.</p>
+      <code>index_AAAA-MM-DD_slug-titulo.html</code>
+    </div>
+  </section>
+
+  <!-- Grid de apresentações (preenchido via JS) -->
+  <section class="grid" id="grid" style="display:none;"></section>
+
+  <footer>
+    Autocare &nbsp;·&nbsp; <strong>Live Consultoria</strong> &nbsp;·&nbsp; Consultor: Luiz Portal &nbsp;·&nbsp; Apoio: Cléber Donato
+  </footer>
+
+  <script>
+    // ── Dados das apresentações ─────────────────────────────────────────────
+    // Para adicionar uma nova apresentação, inclua um objeto neste array:
+    // { date: "2026-06-10", title: "Diagnóstico Inicial", desc: "...", file: "index_2026-06-10_diagnostico-inicial.html", version: "v1.0", obs: "Kickoff" }
+    const apresentacoes = [
+      { date: "2026-05-25", title: "Análise Estratégica do Plano de Ação", desc: "Visão geral do modelo, segmentação de clientes, roadmap de 5 fases, sacadas de diferenciação e análise de riscos com base na reunião de Business Plan.", file: "index_2026-05-25_analise-plano-de-acao.html", version: "v1.0", obs: "Pós-Reunião de Business Plan" }
+    ];
+
+    // ── Render ──────────────────────────────────────────────────────────────
+    const grid = document.getElementById('grid');
+    const empty = document.getElementById('empty-state');
+    const count = document.getElementById('count');
+
+    count.textContent = apresentacoes.length;
+
+    if (apresentacoes.length > 0) {
+      empty.style.display = 'none';
+      grid.style.display = 'grid';
+
+      apresentacoes.forEach(p => {
+        const card = document.createElement('a');
+        card.href = p.file;
+        card.className = 'card';
+        card.target = '_blank';
+        card.innerHTML = `
+          <div class="card-thumb">📊</div>
+          <div class="card-body">
+            <div class="card-date">${p.date}</div>
+            <div class="card-title">${p.title}</div>
+            <div class="card-desc">${p.desc}</div>
+          </div>
+          <div class="card-footer">
+            <span class="card-version">${p.version} · ${p.obs}</span>
+            <div class="card-arrow">→</div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>
