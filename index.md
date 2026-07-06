@@ -6,7 +6,7 @@
 
 | Data | Título | Link (GitHub Pages) | Versão | Observações |
 |------|--------|---------------------|--------|-------------|
-| 2026-05-25 | Análise Estratégica do Plano de Ação | https://ecossistemalive.github.io/autocare-apresentacoes/index_2026-05-25_analise-plano-de-acao.html | v1.0 | Pós-Reunião de Business Plan |
+| 2026-07-06 | Análise Estratégica do Plano de Ação | https://ecossistemalive.github.io/autocare-apresentacoes/index_2026-07-06_analise-plano-de-acao.html | v1.1 | Pós-Reunião de Business Plan |
 
 ## Padrão de entrada
 
