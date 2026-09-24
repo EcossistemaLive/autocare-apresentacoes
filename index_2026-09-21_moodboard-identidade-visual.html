@@ -4,902 +4,891 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moodboard & Identidade Visual — Autocare | Live Consultoria</title>
-  <meta name="description" content="Apresentação executiva e técnica do Moodboard de Identidade Visual da Autocare — Reunião de 21/09/2026 com Fábio Santos, Marcel e Luiz Portal.">
+  <meta name="description" content="Apresentação executiva em rolagem contínua do Moodboard de Identidade Visual da Autocare. Reunião estratégica de 21/09/2026 com Fábio Santos, Marcel e Luiz Portal.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     
     :root {
-      --bg:          #05111d;
-      --bg-card:     #0a1d30;
-      --surface:     #0e2640;
-      --surface-elev:#143456;
-      --surface-lite:#1c436c;
-      --border:      rgba(255,255,255,0.08);
-      --border-amber:rgba(245,158,11,0.3);
-      --amber:       #f59e0b;
-      --amber-glow:  rgba(245,158,11,0.15);
-      --amber-bright:#fbbf24;
-      --platina:     #cbd5e1;
-      --platina-dim: #94a3b8;
-      --white:       #ffffff;
-      --blue-accent: #38bdf8;
-      --blue-deep:   #0284c7;
-      --live-green:  #00e800;
-      --danger:      #ef4444;
-      --font-main:   'Inter', sans-serif;
-      --font-display:'Space Grotesk', sans-serif;
-      --font-mono:   'JetBrains Mono', monospace;
+      --bg:           #061320;
+      --bg-alt:       #091b2c;
+      --card-bg:      #0e263d;
+      --card-elev:    #133350;
+      --card-border:  rgba(255,255,255,0.09);
+      --amber:        #f59e0b;
+      --amber-light:  #fbbf24;
+      --amber-glow:   rgba(245,158,11,0.18);
+      --amber-border: rgba(245,158,11,0.35);
+      --platina:      #e2e8f0;
+      --platina-muted:#94a3b8;
+      --white:        #ffffff;
+      --blue-accent:  #38bdf8;
+      --danger:       #f87171;
+      --success:      #34d399;
+      --font-body:    'Plus Jakarta Sans', sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
     }
 
-    html, body { height: 100%; overflow: hidden; }
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+    }
+
     body {
-      background: var(--bg);
-      color: var(--white);
-      font-family: var(--font-main);
-      display: flex;
-      flex-direction: column;
-      user-select: none;
+      background-color: var(--bg);
+      color: var(--platina);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.75;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    /* ── HEADER ── */
+    /* ── TEXTURA DE FUNDO LEVE (SVG Geometric Mesh + Subtle Radial Glow) ── */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(245,158,11,0.07) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(56,189,248,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(14,38,61,0.5) 0%, transparent 70%),
+        linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+      background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat;
+    }
+
+    /* ── BARRA DE PROGRESSO DE ROLAGEM ── */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--amber) 0%, var(--amber-light) 50%, var(--blue-accent) 100%);
+      width: 0%;
+      z-index: 1000;
+      box-shadow: 0 0 10px rgba(245,158,11,0.7);
+      transition: width 0.1s ease-out;
+    }
+
+    /* ── STICKY TOPBAR ── */
     header {
-      flex-shrink: 0;
-      background: rgba(10, 29, 48, 0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 28px;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(6, 19, 32, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 16px 36px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      z-index: 200;
     }
-    .hd-left { display: flex; align-items: center; gap: 14px; }
-    .logo-mark {
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo-badge {
       background: var(--amber);
-      color: #05111d;
+      color: #061320;
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 4px;
-      letter-spacing: .08em;
-      box-shadow: 0 0 12px rgba(245,158,11,0.4);
-    }
-    header h1 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--white); }
-    header .sep { color: var(--border); margin: 0 6px; }
-    header .sub { font-size: 13px; color: var(--platina-dim); font-weight: 400; }
-    .hd-right { display: flex; align-items: center; gap: 12px; }
-    .badge-farol {
-      background: var(--amber-glow);
-      border: 1px solid var(--border-amber);
-      color: var(--amber-bright);
-      font-size: 11px; font-weight: 600;
-      padding: 3px 12px; border-radius: 20px;
-      display: flex; align-items: center; gap: 6px;
-    }
-    .badge-farol::before {
-      content: ''; width: 6px; height: 6px; background: var(--amber); border-radius: 50%;
-      box-shadow: 0 0 8px var(--amber);
-    }
-    .date-tag { font-size: 11px; color: var(--platina-dim); font-family: var(--font-mono); }
-
-    /* ── SLIDE DECK WRAPPER ── */
-    .deck-wrap {
-      flex: 1;
-      overflow: hidden;
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-      padding: 16px 28px 10px;
-    }
-    .deck-inner {
-      position: relative;
-      flex: 1;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    }
-
-    .slide {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      padding: 32px 42px;
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateX(40px);
-      transition: opacity .4s cubic-bezier(.4,0,.2,1), transform .4s cubic-bezier(.4,0,.2,1);
-      overflow-y: auto;
-    }
-    .slide.active {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(0);
-    }
-    .slide.exit-left {
-      opacity: 0;
-      transform: translateX(-40px);
-    }
-
-    /* ── SLIDE HEADER & FOOTER ── */
-    .sh {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 20px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--border);
-    }
-    .sh-eyebrow {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: .15em; text-transform: uppercase;
-      color: var(--amber); margin-bottom: 4px;
-      font-family: var(--font-mono);
-    }
-    .sh-title {
-      font-family: var(--font-display);
-      font-size: 24px; font-weight: 700; line-height: 1.2;
-    }
-    .sh-title span { color: var(--amber); }
-    .sh-num {
-      font-family: var(--font-mono);
-      font-size: 11px; font-weight: 600;
-      color: var(--platina-dim);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 4px 10px; border-radius: 20px;
-    }
-
-    .sf {
-      margin-top: auto;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-      display: flex; justify-content: space-between;
-      font-size: 11px; color: var(--platina-dim);
-      font-family: var(--font-mono);
-    }
-
-    /* ── LAYOUTS & CARDS ── */
-    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      transition: all .2s;
-    }
-    .card:hover { border-color: rgba(245,158,11,0.25); background: var(--surface-elev); }
-    .card-title {
-      font-family: var(--font-display);
-      font-size: 15px; font-weight: 600; margin-bottom: 8px;
-      display: flex; align-items: center; gap: 8px; color: var(--white);
-    }
-    .card-text { font-size: 13px; color: var(--platina); line-height: 1.6; }
-    
-    .quote-box {
-      background: rgba(245,158,11,0.06);
-      border-left: 3px solid var(--amber);
-      border-radius: 0 10px 10px 0;
-      padding: 16px 20px;
-      font-style: italic;
-      color: var(--platina);
       font-size: 13px;
-      line-height: 1.6;
-      margin: 12px 0;
-    }
-    .quote-author {
-      font-style: normal;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--amber-bright);
-      margin-top: 6px;
-      display: block;
-    }
-
-    /* Color Swatches */
-    .swatch-bar {
-      display: flex;
-      height: 54px;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      margin-bottom: 16px;
-    }
-    .swatch-seg {
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
-      transition: flex .3s;
-    }
-    .swatch-blue   { background: #071927; color: #fff; flex: 65; border-right: 1px solid rgba(255,255,255,0.1); }
-    .swatch-white  { background: #ffffff; color: #071927; flex: 25; }
-    .swatch-amber  { background: #f59e0b; color: #05111d; flex: 10; box-shadow: 0 0 15px rgba(245,158,11,0.4); }
-    .swatch-platina{ background: #94a3b8; color: #05111d; }
-
-    .color-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      text-align: center;
-    }
-    .color-pill {
-      height: 60px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      border: 1px solid rgba(255,255,255,0.1);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-size: 12px; font-weight: 700;
-    }
-
-    /* Health Gauge Mockup */
-    .health-gauge-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px;
-    }
-    .gauge-bar {
-      height: 12px;
+      padding: 5px 12px;
       border-radius: 6px;
-      background: linear-gradient(90deg, #ef4444 0%, #f59e0b 50%, #10b981 100%);
-      position: relative;
-      margin: 14px 0 20px;
+      letter-spacing: .08em;
+      box-shadow: 0 0 14px rgba(245,158,11,0.45);
     }
-    .gauge-pin {
-      position: absolute;
-      top: -6px; left: 82%;
-      width: 24px; height: 24px;
-      background: #fff;
-      border: 3px solid #10b981;
-      border-radius: 50%;
-      transform: translateX(-50%);
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    .brand-titles h1 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
     }
-
-    /* Badges & Tables */
-    .pill {
-      display: inline-block;
-      font-size: 10px; font-weight: 700;
-      padding: 2px 8px; border-radius: 4px;
-      font-family: var(--font-mono); text-transform: uppercase;
+    .brand-titles span {
+      font-size: 13px;
+      color: var(--platina-muted);
+      font-weight: 400;
     }
-    .pill-green { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); }
-    .pill-amber { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
-    .pill-blue  { background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid rgba(56,189,248,0.3); }
-    .pill-red   { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
-
-    table.data-tbl {
-      width: 100%; border-collapse: collapse; font-size: 12px;
-    }
-    table.data-tbl th {
-      background: var(--surface-elev);
-      padding: 10px 14px; text-align: left;
-      font-family: var(--font-display); font-weight: 600;
-      color: var(--platina); border-bottom: 1px solid var(--border);
-    }
-    table.data-tbl td {
-      padding: 10px 14px; border-bottom: 1px solid var(--border);
-      color: var(--platina); font-size: 12px;
-    }
-    table.data-tbl tr:hover td { background: rgba(255,255,255,0.02); }
-
-    /* ── CONTROLS ── */
-    .controls {
-      flex-shrink: 0;
-      background: rgba(10, 29, 48, 0.95);
-      backdrop-filter: blur(12px);
-      border-top: 1px solid var(--border);
-      padding: 12px 30px;
+    .header-nav {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      z-index: 200;
+      gap: 20px;
     }
-    .nav-btn {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--white);
-      padding: 8px 18px;
-      border-radius: 8px;
-      font-size: 13px; font-weight: 600;
-      cursor: pointer; transition: all .2s;
-      font-family: var(--font-display);
+    .header-nav a {
+      color: var(--platina-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
     }
-    .nav-btn:hover:not(:disabled) { background: var(--surface-elev); border-color: var(--border-amber); color: var(--amber); }
-    .nav-btn:disabled { opacity: .3; cursor: not-allowed; }
-    .nav-btn.primary { background: var(--amber); color: #05111d; border-color: var(--amber); }
-    .nav-btn.primary:hover { background: var(--amber-bright); color: #05111d; box-shadow: 0 0 14px rgba(245,158,11,0.4); }
-
-    .progress-area { flex: 1; margin: 0 30px; }
-    .dots-wrap { display: flex; gap: 6px; justify-content: center; }
-    .dot {
-      width: 22px; height: 5px;
-      background: var(--surface-elev);
-      border-radius: 3px;
-      cursor: pointer; transition: all .25s;
+    .header-nav a:hover {
+      color: var(--amber-light);
     }
-    .dot.active {
+    .status-badge {
+      background: var(--amber-glow);
+      border: 1px solid var(--amber-border);
+      color: var(--amber-light);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .status-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
       background: var(--amber);
-      width: 38px;
-      box-shadow: 0 0 8px var(--amber);
-    }
-    .slide-counter {
-      font-family: var(--font-mono);
-      font-size: 12px; font-weight: 600; color: var(--platina-dim);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--amber);
     }
 
-    /* Cover Styling */
-    .cover-box {
-      flex: 1; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; text-align: center;
+    /* ── CONTAINER & SECTION LAYOUT ── */
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 50px 24px 100px;
+      position: relative;
+      z-index: 10;
     }
-    .cover-badge {
-      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
-      color: var(--amber); letter-spacing: .2em; text-transform: uppercase;
-      margin-bottom: 12px;
+
+    section {
+      margin-bottom: 70px;
+      scroll-margin-top: 90px;
     }
-    .cover-title {
+
+    /* ── HERO BANNER ── */
+    .hero {
+      padding: 40px 0 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 60px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      background: var(--amber-glow);
+      border: 1px solid var(--amber-border);
+      padding: 6px 18px;
+      border-radius: 30px;
+      margin-bottom: 24px;
+    }
+    .hero-title {
       font-family: var(--font-display);
-      font-size: 42px; font-weight: 800; line-height: 1.15; max-width: 820px;
+      font-size: clamp(34px, 5.5vw, 56px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      max-width: 900px;
+      margin: 0 auto 24px;
     }
-    .cover-title span { color: var(--amber); text-shadow: 0 0 25px rgba(245,158,11,0.3); }
-    .cover-desc {
-      font-size: 15px; color: var(--platina); max-width: 620px;
-      line-height: 1.7; margin: 16px 0 24px;
+    .hero-title span {
+      color: var(--amber);
+      text-shadow: 0 0 35px rgba(245,158,11,0.35);
     }
-    .cover-meta {
-      display: flex; gap: 24px; background: var(--surface);
-      border: 1px solid var(--border); padding: 14px 28px; border-radius: 12px;
+    .hero-desc {
+      font-size: 20px;
+      color: var(--platina);
+      max-width: 740px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+      font-weight: 400;
     }
-    .cover-meta-item { text-align: left; }
-    .cover-meta-item span { display: block; font-size: 10px; color: var(--platina-dim); font-family: var(--font-mono); text-transform: uppercase; }
-    .cover-meta-item strong { font-size: 13px; color: var(--white); font-family: var(--font-display); }
+    .hero-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px 30px;
+      text-align: left;
+    }
+    .meta-box span {
+      display: block;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      color: var(--platina-muted);
+      letter-spacing: .08em;
+      margin-bottom: 4px;
+    }
+    .meta-box strong {
+      font-family: var(--font-display);
+      font-size: 15px;
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* ── TYPOGRAPHY & SECTION HEADERS ── */
+    .section-tag {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-tag::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, var(--card-border) 0%, transparent 100%);
+    }
+    h2.section-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 36px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 24px;
+    }
+    h2.section-title span {
+      color: var(--amber);
+    }
+    h3.block-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    p {
+      margin-bottom: 18px;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── CARDS & GRIDS ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+      margin: 24px 0;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 24px 0;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin: 24px 0;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+    .card:hover {
+      border-color: rgba(245,158,11,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+    .card.highlight {
+      background: linear-gradient(145deg, var(--card-bg) 0%, var(--card-elev) 100%);
+      border-color: var(--amber-border);
+    }
+    .card.danger {
+      border-color: rgba(248,113,113,0.3);
+      background: rgba(248,113,113,0.04);
+    }
+
+    /* ── CALLOUT / QUOTE BOX ── */
+    .quote-box {
+      background: rgba(245,158,11,0.06);
+      border-left: 4px solid var(--amber);
+      border-radius: 0 14px 14px 0;
+      padding: 24px 28px;
+      margin: 28px 0;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.65;
+    }
+    .quote-author {
+      display: block;
+      font-style: normal;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--amber-light);
+      margin-top: 10px;
+    }
+
+    /* ── COLOR SYSTEM DEMO ── */
+    .palette-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 28px;
+      margin: 24px 0;
+    }
+    .palette-bar {
+      display: flex;
+      height: 68px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      margin-bottom: 24px;
+    }
+    .bar-seg {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      padding: 4px;
+    }
+    .bar-blue {
+      background: #071927;
+      color: #fff;
+      flex: 65;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .bar-white {
+      background: #ffffff;
+      color: #071927;
+      flex: 25;
+    }
+    .bar-amber {
+      background: #f59e0b;
+      color: #061320;
+      flex: 10;
+      box-shadow: 0 0 20px rgba(245,158,11,0.5);
+    }
+
+    .color-spec-card {
+      background: var(--card-elev);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+    }
+    .color-circle {
+      width: 100%;
+      height: 80px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* ── GAUGE DE SAÚDE DO VEÍCULO ── */
+    .gauge-wrapper {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 24px 0;
+    }
+    .gauge-track {
+      height: 18px;
+      border-radius: 9px;
+      background: linear-gradient(90deg, #ef4444 0%, #f59e0b 45%, #10b981 100%);
+      position: relative;
+      margin: 24px 0 32px;
+    }
+    .gauge-marker {
+      position: absolute;
+      top: -8px;
+      left: 84%;
+      width: 34px;
+      height: 34px;
+      background: #ffffff;
+      border: 4px solid #10b981;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 16px rgba(16,185,129,0.7);
+    }
+    .gauge-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* ── BADGES & PILLS ── */
+    .pill {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .pill-green { background: rgba(52,211,153,0.15); color: var(--success); border: 1px solid rgba(52,211,153,0.3); }
+    .pill-amber { background: rgba(245,158,11,0.15); color: var(--amber-light); border: 1px solid rgba(245,158,11,0.3); }
+    .pill-blue  { background: rgba(56,189,248,0.15); color: var(--blue-accent); border: 1px solid rgba(56,189,248,0.3); }
+    .pill-red   { background: rgba(248,113,113,0.15); color: var(--danger); border: 1px solid rgba(248,113,113,0.3); }
+
+    /* ── ACTION PLAN TABLE ── */
+    .table-responsive {
+      overflow-x: auto;
+      margin: 24px 0;
+      border-radius: 14px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+    }
+    table.custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      text-align: left;
+    }
+    table.custom-table th {
+      background: var(--card-elev);
+      padding: 16px 20px;
+      color: var(--white);
+      font-family: var(--font-display);
+      font-weight: 600;
+      border-bottom: 1px solid var(--card-border);
+    }
+    table.custom-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--card-border);
+      color: var(--platina);
+    }
+    table.custom-table tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--card-border);
+      background: rgba(6,19,32,0.95);
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--platina-muted);
+      position: relative;
+      z-index: 10;
+    }
+    footer strong {
+      color: var(--white);
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 14px 20px; flex-direction: column; gap: 12px; align-items: flex-start; }
+      .header-nav { display: none; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .hero-title { font-size: 32px; }
+      .hero-desc { font-size: 17px; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- BARRA DE PROGRESSO -->
+  <div id="progress-bar"></div>
+
+  <!-- HEADER NAVEGÁVEL -->
   <header>
-    <div class="hd-left">
-      <div class="logo-mark">AUTOCARE</div>
-      <h1>Moodboard & Identidade Visual<span class="sep">|</span><span class="sub">Alinhamento Estratégico</span></h1>
+    <div class="brand-wrap">
+      <div class="logo-badge">AUTOCARE</div>
+      <div class="brand-titles">
+        <h1>Moodboard & Identidade Visual</h1>
+        <span>Live Consultoria · Gestão Estratégica</span>
+      </div>
     </div>
-    <div class="hd-right">
-      <div class="badge-farol">Conceito Farol Homologado</div>
-      <div class="date-tag">21/09/2026</div>
-    </div>
+    <nav class="header-nav">
+      <a href="#conceito">O Farol</a>
+      <a href="#cores">Paleta 60-30-10</a>
+      <a href="#transicoes">Transição Suave</a>
+      <a href="#regras">Restrições</a>
+      <a href="#operacao">Digital First</a>
+      <a href="#saude">Saúde do Carro</a>
+      <a href="#plano">Plano de Ação</a>
+    </nav>
+    <div class="status-badge">Conceito Aprovado</div>
   </header>
 
-  <!-- DECK WRAPPER -->
-  <div class="deck-wrap">
-    <div class="deck-inner">
+  <main class="container">
 
-      <!-- SLIDE 1: CAPA -->
-      <div class="slide active">
-        <div class="cover-box">
-          <div class="cover-badge">⚡ Alinhamento de Branding · Fase 01</div>
-          <h2 class="cover-title">A Nova Identidade Visual do Ecossistema <span>Autocare</span></h2>
-          <p class="cover-desc">Síntese executiva da reunião de aprovação do Moodboard de Marca com Fábio Santos (Design), Marcel (Autocare) e Luiz Portal (Live Consultoria).</p>
-          <div class="cover-meta">
-            <div class="cover-meta-item">
-              <span>Data da Reunião</span>
-              <strong>21 de Setembro de 2026</strong>
-            </div>
-            <div class="cover-meta-item">
-              <span>Conceito Mestre</span>
-              <strong>O Farol & Estética Documental</strong>
-            </div>
-            <div class="cover-meta-item">
-              <span>Decisão Operacional</span>
-              <strong>100% Digital First no WhatsApp</strong>
-            </div>
-            <div class="cover-meta-item">
-              <span>Status do Escopo</span>
-              <strong>Aprovado com Ressalvas Suaves</strong>
-            </div>
-          </div>
+    <!-- HERO SECTION -->
+    <header class="hero">
+      <div class="hero-eyebrow">⚡ Relatório Executivo de Branding & Direção Criativa</div>
+      <h1 class="hero-title">A Nova Identidade Visual do Ecossistema <span>Autocare</span></h1>
+      <p class="hero-desc">Registro detalhado e ilustrado da reunião de alinhamento e homologação do Moodboard de Marca, realizada em 21 de setembro de 2026 com o designer Fábio Santos, o sponsor Marcel e o consultor Luiz Portal.</p>
+      
+      <div class="hero-meta-grid">
+        <div class="meta-box">
+          <span>Data da Reunião</span>
+          <strong>21 de Setembro de 2026</strong>
         </div>
-        <div class="sf">
-          <div>Autocare Movimento & Fleet · Gestão Preventiva por Assinatura</div>
-          <div>Live Consultoria · Auditoria Documental & Governança</div>
+        <div class="meta-box">
+          <span>Condutor da Sessão</span>
+          <strong>Fábio Santos Oot (Design)</strong>
+        </div>
+        <div class="meta-box">
+          <span>Decisor Autocare</span>
+          <strong>Marcel Patrick (Co-fundador)</strong>
+        </div>
+        <div class="meta-box">
+          <span>Líder de Estratégia</span>
+          <strong>Luiz Portal (Live Consultoria)</strong>
         </div>
       </div>
+    </header>
 
-      <!-- SLIDE 2: BIG PICTURE & OBJETIVOS -->
-      <div class="slide">
-        <div class="sh">
-          <div class="sh-left">
-            <div class="sh-eyebrow">01 · Visão Geral da Reunião</div>
-            <div class="sh-title">Do Modelo de Negócios à <span>Identidade Tangível</span></div>
-          </div>
-          <div class="sh-num">SLIDE 02 / 12</div>
-        </div>
-        <div class="g2" style="margin-bottom:16px;">
-          <div class="card">
-            <div class="card-title">🎯 Objetivo da Sessão</div>
-            <p class="card-text">Bater o martelo na linguagem estética que traduzirá a tese da Autocare antes de desenhar o logotipo definitivo. A marca precisa transmitir sobriedade institucional, precisão técnica e acolhimento para clientes receosos de oficinas mecânicas.</p>
-          </div>
-          <div class="card">
-            <div class="card-title">🏛️ Stakeholders Presentes</div>
-            <p class="card-text">
-              • <strong>Fábio Santos Oot:</strong> Designer e especialista em Identidade Visual (SEBRAETEC).<br>
-              • <strong>Marcel:</strong> Co-fundador e Sponsor Principal (Decisor de Negócio).<br>
-              • <strong>Luiz Portal:</strong> Consultor Sênior e Líder de Estratégia (Live Consultoria).
-            </p>
-          </div>
+    <!-- TL;DR EXECUTIVO -->
+    <section>
+      <div class="card highlight">
+        <h3 class="block-title">📌 Sumário Executivo para C-Level (TL;DR)</h3>
+        <p style="font-size: 18px; color: var(--white); line-height: 1.8;">
+          A reunião sacramentou a direção estética da <strong>Autocare</strong> sob a tese central do <strong>"Farol"</strong> (clareza, orientação e confiança pericial). Aprovou-se a proporção cromática de <strong>60-70% Azul Noite</strong>, <strong>20-30% Branco</strong> e <strong>até 10% Âmbar</strong>, com o acolhimento da proposta de Marcel de introduzir <strong>cinza platinado e tons graduais de azul</strong> para evitar choques visuais e harmonizar fotografias reais. Deliberou-se que a operação cotidiana será <strong>100% Digital First</strong> (WhatsApp/Smartphones) para economizar insumos de impressão, reservando impressos de luxo para o momento de renovação anual do plano. Ficou acordada a criação do inovador gráfico de <strong>"Saúde do Veículo"</strong> como catalisador de valor para revenda do automóvel.
+        </p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 1: O CONCEITO MESTRE -->
+    <section id="conceito">
+      <div class="section-tag">01 · Fundamento Criativo</div>
+      <h2 class="section-title">O Conceito Central: <span>A Metáfora do Farol</span></h2>
+      <p>A identidade visual da Autocare nasce da superação da desconfiança histórica do motorista em relação a oficinas mecânicas. Para romper com clichês de mercado, a marca adota o <strong>Farol</strong> como símbolo mestre da sua proposta de valor:</p>
+      
+      <div class="grid-3">
+        <div class="card">
+          <h3 class="block-title">💡 Farol Automotivo</h3>
+          <p>Ilumina a escuridão da pista. Revela com transparência radical o que está acontecendo embaixo do capô do veículo, antecipando quebras através da manutenção preventiva regular.</p>
         </div>
         <div class="card">
-          <div class="card-title">⚖️ O Dilema Central Resolvido</div>
-          <p class="card-text">Como criar uma marca que pertença à vida diária do proprietário de um carro popular e de um veículo de luxo simultaneamente? O design não pode <em>ostentar</em> (para não afastar o motorista comum) nem <em>parecer barato</em> (para sustentar planos anuais premium).</p>
-        </div>
-        <div class="sf">
-          <div>Autocare · Moodboard Visual</div>
-          <div>Governança de Projeto</div>
-        </div>
-      </div>
-
-      <!-- SLIDE 3: O CONCEITO MESTRE - O FAROL -->
-      <div class="slide">
-        <div class="sh">
-          <div class="sh-left">
-            <div class="sh-eyebrow">02 · Arquitetura Conceitual</div>
-            <div class="sh-title">A Metáfora Mãe: <span>O Farol</span></div>
-          </div>
-          <div class="sh-num">SLIDE 03 / 12</div>
-        </div>
-        <div class="g3" style="margin-bottom:14px;">
-          <div class="card">
-            <div class="card-title">💡 Farol do Automóvel</div>
-            <p class="card-text">Ilumina o caminho à frente. Traz a clareza sobre o que está escondido na mecânica do carro, evitando quebras inesperadas através de manutenção preditiva.</p>
-          </div>
-          <div class="card">
-            <div class="card-title">🗼 Farol do Continente</div>
-            <p class="card-text">Ponto fixo de referência e segurança em noite de tempestade. A Autocare é o porto seguro e o árbitro neutro que protege o motorista nas oficinas credenciadas.</p>
-          </div>
-          <div class="card">
-            <div class="card-title">✨ A Luz Quente Focal</div>
-            <p class="card-text">Como o único ponto de luz no painel do carro à noite. O ponto focal âmbar não distrai nem ofusca: ele direciona o olhar para a informação prioritária.</p>
-          </div>
-        </div>
-        <div class="quote-box">
-          "Quando você pega o farol do carro é para você enxergar. Quando pega o farol do continente, é a referência onde as pessoas podem confiar. A estrutura da letra 'A' já carrega naturalmente a geometria de um farol."
-          <span class="quote-author">— Marcel, durante a reunião de alinhamento</span>
-        </div>
-        <div class="sf">
-          <div>Conceito: Clareza radical sobre fundo escuro</div>
-          <div>Live Consultoria</div>
-        </div>
-      </div>
-
-      <!-- SLIDE 4: PALETA CROMÁTICA 60-30-10 -->
-      <div class="slide">
-        <div class="sh">
-          <div class="sh-left">
-            <div class="sh-eyebrow">03 · Sistema de Cores</div>
-            <div class="sh-title">A Regra Áurea de Proporção: <span>60-30-10</span></div>
-          </div>
-          <div class="sh-num">SLIDE 04 / 12</div>
-        </div>
-        <div class="swatch-bar">
-          <div class="swatch-seg swatch-blue">60% a 70% AZUL NOTURNO</div>
-          <div class="swatch-seg swatch-white">20% a 30% BRANCO</div>
-          <div class="swatch-seg swatch-amber">≤10% ÂMBAR</div>
-        </div>
-        <div class="g3">
-          <div class="color-card">
-            <div class="color-pill" style="background:#071927; color:#fff;">#071927</div>
-            <div class="card-title" style="justify-content:center;">Azul Noturno / Profundo</div>
-            <p class="card-text">A base estável. Transmite segurança institucional, serenidade e substitui o preto puro por um tom corporativo nobre e acolhedor.</p>
-          </div>
-          <div class="color-card">
-            <div class="color-pill" style="background:#ffffff; color:#071927;">#FFFFFF</div>
-            <div class="card-title" style="justify-content:center;">Branco Clareza</div>
-            <p class="card-text">O elemento de contraste e respiração. Utilizado em tipografias de leitura, ícones e linhas delimitadoras de laudos periciais.</p>
-          </div>
-          <div class="color-card">
-            <div class="color-pill" style="background:#f59e0b; color:#05111d;">#F59E0B</div>
-            <div class="card-title" style="justify-content:center;">Âmbar / Luz Quente</div>
-            <p class="card-text">Escassez radical. Usado estritamente em pontos de decisão, chamadas vitais e na iluminação focal dos selos de aprovação.</p>
-          </div>
-        </div>
-        <div class="sf">
-          <div>A escassez do âmbar é regra auditável: se passar de 10%, a marca perde o impacto</div>
-          <div>Manual de Marca Autocare</div>
-        </div>
-      </div>
-
-      <!-- SLIDE 5: TRANSIÇÃO SUAVE & CINZA PLATINADO -->
-      <div class="slide">
-        <div class="sh">
-          <div class="sh-left">
-            <div class="sh-eyebrow">04 · Refinamento Aprovado</div>
-            <div class="sh-title">A Contribuição de Marcel: <span>Transições Suaves</span></div>
-          </div>
-          <div class="sh-num">SLIDE 05 / 12</div>
-        </div>
-        <div class="g2" style="margin-bottom:14px;">
-          <div class="card">
-            <div class="card-title">⚠️ O Ponto de Tensão Apontado</div>
-            <p class="card-text">Marcel alertou que o salto visual abrupto do <strong>Azul Noite</strong> diretamente para o <strong>Branco Puro</strong> gera choque ótico severo em telas de smartphone. Além disso, fotografias da rotina da oficina trazem peças reais com cores fortes (como cabos laranjas ou luvas azuis).</p>
-          </div>
-          <div class="card">
-            <div class="card-title">✅ A Solução Deliberada</div>
-            <p class="card-text">Fábio Santos acolheu a recomendação para expandir a paleta técnica de 3 para até <strong>6 tonalidades estruturadas</strong>, incluindo o <strong>Cinza Platinado (#94A3B8 / #CBD5E1)</strong> e azuis intermediários para suavizar as interfaces e bordas de documentos.</p>
-          </div>
-        </div>
-        <div class="quote-box">
-          "Se você transita do escuro direto pro tom claro, você leva um choque. Um cinza platinado e tons intermediários de azul vão dar o conforto visual que o motorista precisa ao abrir a ordem de serviço no WhatsApp."
-          <span class="quote-author">— Marcel & Fábio Santos (consenso registrado na ata)</span>
-        </div>
-        <div class="sf">
-          <div>Flexibilidade técnica homologada para fotografia e UX mobile</div>
-          <div>Live Consultoria</div>
-        </div>
-      </div>
-
-      <!-- SLIDE 6: CORES E ESTÉTICAS EXPRESSAMENTE VETADAS -->
-      <div class="slide">
-        <div class="sh">
-          <div class="sh-left">
-            <div class="sh-eyebrow">05 · Diretrizes Restritivas</div>
-            <div class="sh-title">O Que a Marca <span>Nunca</span> Pode Parecer</div>
-          </div>
-          <div class="sh-num">SLIDE 06 / 12</div>
-        </div>
-        <div class="g4">
-          <div class="card" style="border-color:rgba(239,68,68,0.3);">
-            <div class="card-title" style="color:var(--danger);">🚫 Vermelho Alarme</div>
-            <p class="card-text">Proibido. Remete a pânico, acidente, prejuízo financeiro e falha catastrófica. A Autocare existe para gerar paz de espírito e previsibilidade.</p>
-          </div>
-          <div class="card" style="border-color:rgba(239,68,68,0.3);">
-            <div class="card-title" style="color:var(--danger);">🚫 Amarelo Limão</div>
-            <p class="card-text">Proibido. Estética esportiva de corrida e promoção barata que desconecta a marca do posicionamento de governança e laudo confiável.</p>
-          </div>
-          <div class="card" style="border-color:rgba(239,68,68,0.3);">
-            <div class="card-title" style="color:var(--danger);">🚫 Degradê Esportivo</div>
-            <p class="card-text">Proibido. Não somos uma preparadora de arrancada nem estética de tuning. O metal da Autocare é escovado e fosco, nunca cromado de alta velocidade.</p>
-          </div>
-          <div class="card" style="border-color:rgba(239,68,68,0.3);">
-            <div class="card-title" style="color:var(--danger);">🚫 Verde 'Eco' Genérico</div>
-            <p class="card-text">Proibido. A sustentabilidade da Autocare vem do serviço bem executado que dura mais e reduz descarte, não de clichês ambientalistas vazios.</p>
-          </div>
-        </div>
-        <div class="card" style="margin-top:14px;">
-          <div class="card-title">🙅‍♂️ Proibição de Clichês da Categoria</div>
-          <p class="card-text">O logotipo e a marca não devem utilizar engrenagens genéricas, chaves de boca cruzadas, velocímetros esportivos ou desenhos estilizados de carros em itálico rápido.</p>
-        </div>
-        <div class="sf">
-          <div>Léxico visual limpo: a diferenciação reside na postura sóbria</div>
-          <div>Diretrizes de Governança</div>
-        </div>
-      </div>
-
-      <!-- SLIDE 7: TIPOGRAFIA & FORMAS GEOMÉTRICAS -->
-      <div class="slide">
-        <div class="sh">
-          <div class="sh-left">
-            <div class="sh-eyebrow">06 · Linguagem Estrutural</div>
-            <div class="sh-title">Tipografia, Formas e <span>Diagramação</span></div>
-          </div>
-          <div class="sh-num">SLIDE 07 / 12</div>
-        </div>
-        <div class="g2" style="margin-bottom:14px;">
-          <div class="card">
-            <div class="card-title">✍️ Tipografia Humanista Sem Serifa</div>
-            <p class="card-text">Letras abertas, amigáveis e acolhedoras. Nada de caixa alta pesada ou impositiva. A marca conversa de igual para igual com o cliente, gerando proximidade e tirando o peso da tensão da oficina.</p>
-          </div>
-          <div class="card">
-            <div class="card-title">🔢 Tipografia Monoespaçada (Técnica)</div>
-            <p class="card-text">Utilizada em cabeçalhos técnicos, números de série de peças (OEM), laudos e orçamentos. Transmite precisão cirúrgica de engenharia, conferindo estética de diário de bordo confiável.</p>
-          </div>
-        </div>
-        <div class="g2">
-          <div class="card">
-            <div class="card-title">📏 Linha Horizontal de Corte</div>
-            <p class="card-text">A régua de layout da Autocare: o que está <strong>acima da linha</strong> é a informação crítica e imediata que o cliente precisa saber; o que está <strong>abaixo da linha</strong> é a discriminação analítica complementar.</p>
-          </div>
-          <div class="card">
-            <div class="card-title">🔍 Textura de Vidro Canelado</div>
-            <p class="card-text">Inspirado nas lentes físicas dos faróis antigos. Elemento gráfico de transparência seletiva onde certas informações ganham nitidez cristalina enquanto o ruído de fundo é desfocado.</p>
-          </div>
-        </div>
-        <div class="sf">
-          <div>Equilíbrio perfeito entre o acolhimento humano e a técnica pericial</div>
-          <div>Identidade Visual Autocare</div>
-        </div>
-      </div>
-
-      <!-- SLIDE 8: CURADORIA FOTOGRÁFICA REAL -->
-      <div class="slide">
-        <div class="sh">
-          <div class="sh-left">
-            <div class="sh-eyebrow">07 · Linguagem Fotográfica</div>
-            <div class="sh-title">A Tese da Prova: <span>Fotografia Real Sem Pose</span></div>
-          </div>
-          <div class="sh-num">SLIDE 08 / 12</div>
-        </div>
-        <div class="g2" style="margin-bottom:16px;">
-          <div class="card">
-            <div class="card-title">❌ O Que Está Vetado</div>
-            <p class="card-text">
-              • Modelos de bancos de imagens genéricos.<br>
-              • "Mecânico sorridente de braços cruzados olhando para a câmera".<br>
-              • Iluminação de estúdio forçada e oficinas americanizadas irreais.<br>
-              • Imagens fictícias que não representem serviços verdadeiramente prestados.
-            </p>
-          </div>
-          <div class="card">
-            <div class="card-title">📸 O Que Define a Régua da Marca</div>
-            <p class="card-text">
-              • <strong>Graxa real e ferramentas em uso:</strong> o mecânico focado na peça.<br>
-              • <strong>Luz natural lateral:</strong> profundidade genuína sem efeitos dramáticos.<br>
-              • <strong>Ninguém posando:</strong> captura documental espontânea do trabalho.<br>
-              • <strong>Fotografia como laudo:</strong> a foto é um registro pericial auditável.
-            </p>
-          </div>
+          <h3 class="block-title">🗼 Farol do Continente</h3>
+          <p>O ponto fixo de referência na costa. Em noites de tempestade e insegurança, a Autocare funciona como o porto seguro onde o motorista tem certeza de que não será explorado.</p>
         </div>
         <div class="card">
-          <div class="card-title">🏛️ Territórios de Referência Fora da Mecânica</div>
-          <p class="card-text">A Autocare busca suas maiores referências na <strong>sinalização internacional de aeroportos</strong> (clareza universal e hierarquia infalível) e nos <strong>laudos médicos e cadernos de voo da aviação</strong> (espaços limpos, campos preenchidos e seriedade documental).</p>
-        </div>
-        <div class="sf">
-          <div>"Uma marca que diz que prova, mas usa foto de banco, contradiz a própria tese."</div>
-          <div>Fábio Santos · Designer</div>
+          <h3 class="block-title">✨ A Luz Quente Focal</h3>
+          <p>O feixe giratório ou a luz do painel na escuridão. O ponto âmbar focal serve para indicar a decisão correta, orientando o olhar do cliente diretamente para a solução.</p>
         </div>
       </div>
 
-      <!-- SLIDE 9: DIGITAL FIRST VS MATERIAIS NOBRES -->
-      <div class="slide">
-        <div class="sh">
-          <div class="sh-left">
-            <div class="sh-eyebrow">08 · Eficiência Operacional</div>
-            <div class="sh-title">Operação <span>Digital First</span> & Impressos de Retenção</div>
-          </div>
-          <div class="sh-num">SLIDE 09 / 12</div>
+      <div class="quote-box">
+        "O farol do carro serve para você enxergar o chão; já o farol do continente é a referência em que você confia. A própria letra 'A' de Autocare já carrega a geometria de uma torre de farol. Não precisamos inventar moda: a marca precisa ser esse ponto seguro."
+        <span class="quote-author">— Marcel Patrick, Decisor da Autocare</span>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: PALETA CROMÁTICA -->
+    <section id="cores">
+      <div class="section-tag">02 · Arquitetura Cromática</div>
+      <h2 class="section-title">A Regra de Proporção: <span>60-30-10</span></h2>
+      <p>A paleta cromática foi estruturada com rigor técnico para evitar que a marca se torne apenas mais uma combinação aleatória de cores. Cada tom cumpre uma função psicológica e operacional precisa:</p>
+
+      <div class="palette-container">
+        <div class="palette-bar">
+          <div class="bar-seg bar-blue">60% a 70% AZUL NOITE</div>
+          <div class="bar-seg bar-white">20% a 30% BRANCO</div>
+          <div class="bar-seg bar-amber">≤10% ÂMBAR</div>
         </div>
-        <div class="g2" style="margin-bottom:14px;">
-          <div class="card">
-            <div class="card-title">📱 Rotina Diária: 100% Digital</div>
-            <p class="card-text">Marcel eliminou o risco de altos custos com tintas escuras na impressora da oficina: <strong>nenhuma ordem de serviço ou laudo corriqueiro será impresso em papel</strong>. Tudo será consumido via WhatsApp, PDF vertical responsivo e telas de smartphone.</p>
+
+        <div class="grid-3">
+          <div class="color-spec-card">
+            <div class="color-circle" style="background:#071927; color:#fff;">#071927</div>
+            <h3 class="block-title" style="justify-content:center;">Azul Profundo</h3>
+            <p>60% a 70% da composição. A noite, a serenidade e a estabilidade corporativa. Fundo nobre que acolhe as informações sem a agressividade do preto puro.</p>
           </div>
-          <div class="card">
-            <div class="card-title">📘 Marco Anual: O Encarte Nobre</div>
-            <p class="card-text">O material físico de alta gramatura e fundo escuro fica reservado para momentos nobres de retenção: a entrega do <strong>Guia do Proprietário / Histórico do Veículo</strong> encadernado em mãos no momento da renovação anual da assinatura.</p>
+          <div class="color-spec-card">
+            <div class="color-circle" style="background:#ffffff; color:#071927;">#FFFFFF</div>
+            <h3 class="block-title" style="justify-content:center;">Branco Clareza</h3>
+            <p>20% a 30% da composição. O contraste cristalino e o respiro visual. Garante leitura fluida para relatórios periciais e tipografia de suporte.</p>
+          </div>
+          <div class="color-spec-card">
+            <div class="color-circle" style="background:#f59e0b; color:#061320;">#F59E0B</div>
+            <h3 class="block-title" style="justify-content:center;">Ponto Âmbar</h3>
+            <p>No máximo 10%. A luz quente do farol. Escassez radical: deve ser auditável e reservado para call-to-actions, selos e decisões críticas.</p>
           </div>
         </div>
-        <div class="quote-box">
-          "Se eu tivesse que imprimir 30 ordens de serviço por dia em fundo escuro na oficina, o custo seria inviável. Hoje tudo vive no digital. Deixamos o impresso bonito para entregar como um livro de valor na renovação do plano."
-          <span class="quote-author">— Marcel Patrick</span>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: TRANSIÇÕES SUAVES & CINZA PLATINADO -->
+    <section id="transicoes">
+      <div class="section-tag">03 · Aprimoramento da Reunião</div>
+      <h2 class="section-title">Transições Suaves & <span>Cinza Platinado</span></h2>
+      <p>Durante a apresentação, Marcel fez uma intervenção decisiva sobre a usabilidade prática da marca no cotidiano das oficinas mecânicas e nas telas dos celulares:</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="block-title">⚠️ O Alerta de Marcel</h3>
+          <p>O contraste abrupto entre o fundo Azul Profundo e o Branco Puro causa desconforto visual e sensação de rigidez em smartphones. Além disso, fotografias reais de mecânicos trabalhando capturam naturalmente componentes com cores vivas (mangueiras laranjas, conectores vermelhos, luvas de proteção azuis). A marca não podia ser tão rígida a ponto de rejeitar a vida real.</p>
         </div>
-        <div class="sf">
-          <div>Economia de escala operacional aliada à alta percepção de valor nos momentos certos</div>
-          <div>Live Consultoria</div>
+        <div class="card highlight">
+          <h3 class="block-title">✅ O Consenso Criativo</h3>
+          <p>Fábio Santos acolheu a ponderação e aprovou a inclusão de <strong>cores de suporte intermediárias</strong>, destacando o <strong>Cinza Platinado (#94A3B8 / #CBD5E1)</strong> e nuances secundárias de azul. O manual da marca agora prevê até 6 tons de apoio para garantir transições suaves em cabeçalhos, tabelas de dados e layouts responsivos.</p>
         </div>
       </div>
 
-      <!-- SLIDE 10: O GRÁFICO DE SAÚDE DO VEÍCULO -->
-      <div class="slide">
-        <div class="sh">
-          <div class="sh-left">
-            <div class="sh-eyebrow">09 · Diferenciação de Produto</div>
-            <div class="sh-title">A Sacada de Marcel: <span>Saúde do Veículo</span></div>
-          </div>
-          <div class="sh-num">SLIDE 10 / 12</div>
+      <div class="quote-box">
+        "O cinza platinado cabe perfeitamente na comunicação. Ele funciona como uma ponte harmoniosa entre a solidez do azul noturno e a clareza do branco, tornando a leitura muito mais agradável no celular."
+        <span class="quote-author">— Fábio Santos Oot, Designer do Projeto</span>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: LÉXICO RESTRITIVO -->
+    <section id="regras">
+      <div class="section-tag">04 · Blindagem de Marca</div>
+      <h2 class="section-title">O Que a Autocare <span>Nunca</span> Deve Parecer</h2>
+      <p>Tão importante quanto definir o que a marca é, foi estabelecer com frieza protocolar tudo aquilo que a Autocare está proibida de ser:</p>
+
+      <div class="grid-4">
+        <div class="card danger">
+          <span class="pill pill-red">PROIBIDO</span>
+          <h3 class="block-title" style="color:var(--danger); margin-top:8px;">Vermelho Alarme</h3>
+          <p>Gera pânico, sensação de dano mecânico e prejuízo financeiro. A Autocare é previsibilidade e tranquilidade.</p>
         </div>
-        <div class="health-gauge-box" style="margin-bottom:14px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <div style="font-family:var(--font-display); font-weight:700; font-size:14px;">MOCKUP CONCEITUAL: STATUS DE INTEGRIDADE VEICULAR</div>
-            <span class="pill pill-green">STATUS: 82% · SAUDÁVEL / PREVENTIVO</span>
-          </div>
-          <div class="gauge-bar">
-            <div class="gauge-pin"></div>
-          </div>
-          <div style="display:flex; justify-content:space-between; font-size:11px; font-family:var(--font-mono); color:var(--platina-dim);">
-            <span style="color:#ef4444;">CRÍTICO (0-40%)</span>
-            <span style="color:#f59e0b;">ATENÇÃO (41-70%)</span>
-            <span style="color:#10b981;">EXCELENTE (71-100%)</span>
-          </div>
+        <div class="card danger">
+          <span class="pill pill-red">PROIBIDO</span>
+          <h3 class="block-title" style="color:var(--danger); margin-top:8px;">Amarelo Limão</h3>
+          <p>Estética promocional estridente de posto de combustível barato e corridas automotivas, desconectada da governança.</p>
         </div>
-        <div class="g2">
-          <div class="card">
-            <div class="card-title">📊 Percepção Visual sem Frieza de Números</div>
-            <p class="card-text">Em vez de tabelas maçantes de torque e tolerâncias milimétricas, o cliente enxerga o gráfico de saúde do seu carro por saturação e cores intuitivas, compreendendo instantaneamente o que foi revisado.</p>
-          </div>
-          <div class="card">
-            <div class="card-title">🚗 Valor Concreto na Revenda do Carro</div>
-            <p class="card-text">Apresentar um histórico com laudos visuais da Autocare na hora de vender o veículo comprova a saúde mecânica do carro, funcionando como um manual pericial auditável que valoriza o automóvel no mercado.</p>
-          </div>
+        <div class="card danger">
+          <span class="pill pill-red">PROIBIDO</span>
+          <h3 class="block-title" style="color:var(--danger); margin-top:8px;">Degradês & Cromo</h3>
+          <p>Visual tuning dos anos 2000. O metal da Autocare é escovado, fosco e arquitetônico, nunca cromado de alta velocidade.</p>
         </div>
-        <div class="sf">
-          <div>O laudo deixa de ser despesa e passa a ser investimento financeiro no patrimônio</div>
-          <div>Autocare Experience</div>
+        <div class="card danger">
+          <span class="pill pill-red">PROIBIDO</span>
+          <h3 class="block-title" style="color:var(--danger); margin-top:8px;">Verde Eco Genérico</h3>
+          <p>Clichê de 'marketing sustentável'. Nossa sustentabilidade decorre do trabalho bem feito que evita o descarte prematuro de peças.</p>
         </div>
       </div>
 
-      <!-- SLIDE 11: PLANO DE AÇÃO E CRONOGRAMA -->
-      <div class="slide">
-        <div class="sh">
-          <div class="sh-left">
-            <div class="sh-eyebrow">10 · Entregáveis e Prazos</div>
-            <div class="sh-title">Plano de Ação: <span>Próximos Passos de Design</span></div>
-          </div>
-          <div class="sh-num">SLIDE 11 / 12</div>
+      <div class="card" style="margin-top:20px;">
+        <h3 class="block-title">🚫 Eliminação de Clichês Visuais do Setor</h3>
+        <p>Estão expressamente banidos do projeto: engrenagens genéricas, chaves de boca cruzadas, velocímetros em arco esportivo e silhuetas estilizadas de veículos em velocidade. A Autocare representa <strong>inteligência preventiva</strong>, não desempenho de pista.</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 5: TIPOGRAFIA & CURADORIA FOTOGRÁFICA -->
+    <section>
+      <div class="section-tag">05 · Linguagem Visual & Fotografia</div>
+      <h2 class="section-title">Tipografia Cirúrgica & <span>A Tese da Prova Real</span></h2>
+      
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="block-title">✍️ Tipografia Humanista + Monoespaçada</h3>
+          <p><strong>• Títulos e Identidade:</strong> Fonte sem serifa humanista, com desenho aberto e amigável. Comunica acolhimento sem o autoritarismo de caixas altas pesadas.<br>
+          <strong>• Dados Técnicos e Laudos:</strong> Fonte monoespaçada de engenharia (estilo máquina de precisão), ideal para numerações de peças originais (OEM), quilometragens e datas periciais.</p>
         </div>
-        <div style="overflow-x:auto; margin-bottom:14px;">
-          <table class="data-tbl">
-            <thead>
-              <tr>
-                <th>Ação / Entregável</th>
-                <th>Responsável</th>
-                <th>Prazo Estimado</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Curadoria no Pinterest/Behance:</strong> Enviar referências estéticas via WhatsApp</td>
-                <td>Marcel</td>
-                <td>23/09/2026</td>
-                <td><span class="pill pill-amber">Vencido / Enviar Hoje</span></td>
-              </tr>
-              <tr>
-                <td><strong>Refinamento Cromático:</strong> Adicionar tons de cinza platinado e azuis de suporte</td>
-                <td>Fábio Santos</td>
-                <td>28/09/2026</td>
-                <td><span class="pill pill-blue">Em Andamento</span></td>
-              </tr>
-              <tr>
-                <td><strong>Estudos da Marca Autocare:</strong> Símbolo do farol e tipografia humanista</td>
-                <td>Fábio Santos</td>
-                <td>02/10/2026</td>
-                <td><span class="pill pill-blue">Em Andamento</span></td>
-              </tr>
-              <tr>
-                <td><strong>Sistema de Selos de Oficina:</strong> Níveis e anéis de credenciamento</td>
-                <td>Fábio Santos</td>
-                <td>05/10/2026</td>
-                <td><span class="pill pill-green">A Iniciar</span></td>
-              </tr>
-              <tr>
-                <td><strong>Design do Gráfico de Saúde:</strong> Interface do componente de laudo mobile</td>
-                <td>Fábio Santos</td>
-                <td>05/10/2026</td>
-                <td><span class="pill pill-green">A Iniciar</span></td>
-              </tr>
-              <tr>
-                <td><strong>Reunião de Apresentação Oficial:</strong> Validação final da identidade completa</td>
-                <td>Fábio + Luiz Portal</td>
-                <td>29/09/2026</td>
-                <td><span class="pill pill-amber">A Agendar</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="sf">
-          <div>Prazos cruzados com governança corporativa da Live Consultoria</div>
-          <div>Auditoria Contínua</div>
+        <div class="card">
+          <h3 class="block-title">📸 Fotografia Real Sem Pose</h3>
+          <p><strong>• Regra de Ouro:</strong> Banimento total de bancos de imagens padronizados com mecânicos de dentes perfeitos sorrindo de braços cruzados.<br>
+          <strong>• Realismo Documental:</strong> Luz natural lateral, ferramentas sujas de uso diário, graxa real e mãos trabalhando. A imagem serve como evidência probatória da seriedade do atendimento.</p>
         </div>
       </div>
 
-      <!-- SLIDE 12: CONCLUSÃO E PRÓXIMA ETAPA -->
-      <div class="slide">
-        <div class="sh">
-          <div class="sh-left">
-            <div class="sh-eyebrow">11 · Conclusão Estratégica</div>
-            <div class="sh-title">Régua Alta e <span>Prontidão para o Piloto</span></div>
-          </div>
-          <div class="sh-num">SLIDE 12 / 12</div>
+      <div class="card highlight">
+        <h3 class="block-title">🏛️ Territórios de Referência Fora do Setor Automotivo</h3>
+        <p>A consultoria e o design buscaram inspiração em dois universos de excelência máxima:</p>
+        <p><strong>1. Sinalização Aeroportuária:</strong> A arte de guiar multidões com clareza universal imediata, legível por qualquer perfil de público sob qualquer condição de luz.<br>
+        <strong>2. Laudos Médicos e Diários de Bordo da Aviação:</strong> Campos limpos, diagramação impecável e compromisso com o registro factual inquestionável.</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 6: OPERAÇÃO DIGITAL FIRST -->
+    <section id="operacao">
+      <div class="section-tag">06 · Eficiência de Custos</div>
+      <h2 class="section-title">Operação <span>Digital First</span> & Impressos de Retenção</h2>
+      
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="block-title">📱 Rotina do Dia a Dia (100% WhatsApp)</h3>
+          <p>Para poupar custos operacionais astronômicos com toners escuros nas oficinas parceiras, <strong>nenhuma ordem de serviço ou laudo corriqueiro será impresso</strong>. O cliente recebe tudo em PDF vertical otimizado para a palma da mão, com leitura fluida e link auditável direto no WhatsApp.</p>
         </div>
-        <div class="g2" style="margin-bottom:16px;">
-          <div class="card">
-            <div class="card-title">🚀 Saldo da Sessão</div>
-            <p class="card-text">
-              • Total convergência de visão entre cliente, consultoria e design.<br>
-              • Marca blindada contra clichês apelativos da indústria mecânica.<br>
-              • Eficiência de custos preservada pelo modelo prioritariamente digital.<br>
-              • Caminho livre para o protocolo da marca nominativa/mista no INPI.
-            </p>
-          </div>
-          <div class="card">
-            <div class="card-title">📌 Ponto de Atenção para o Piloto</div>
-            <p class="card-text">
-              Testar rigorosamente o contraste das telas escuras sob a incidência direta do sol, simulando o motorista utilizando o WhatsApp dentro do pátio ou na recepção da oficina credenciada.
-            </p>
-          </div>
+        <div class="card">
+          <h3 class="block-title">📘 Marco Anual de Retenção (O Livro Nobre)</h3>
+          <p>A tangibilidade física fica reservada para momentos estratégicos de alto valor: o <strong>Guia do Proprietário / Laudo Histórico</strong> entregue fisicamente em papel texturizado de alta gramatura na renovação anual da assinatura, reforçando a decisão de permanecer no plano.</p>
         </div>
-        <div class="cover-meta" style="justify-content:space-between; margin-top:10px;">
-          <div class="cover-meta-item">
-            <span>Cliente</span>
-            <strong>Autocare</strong>
-          </div>
-          <div class="cover-meta-item">
-            <span>Sponsor</span>
-            <strong>Marcel Patrick</strong>
-          </div>
-          <div class="cover-meta-item">
-            <span>Consultoria</span>
-            <strong>Live Consultoria (Luiz Portal / Cléber Donato)</strong>
-          </div>
-          <div class="cover-meta-item">
-            <span>Design</span>
-            <strong>Fábio Santos Oot</strong>
-          </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 7: SAÚDE DO VEÍCULO -->
+    <section id="saude">
+      <div class="section-tag">07 · Inovação de Produto</div>
+      <h2 class="section-title">A Grande Sacada: <span>O Gráfico de Saúde do Veículo</span></h2>
+      <p>Marcel apresentou uma contribuição que transforma o relatório pericial em um poderoso instrumento de valorização financeira para o proprietário do carro:</p>
+
+      <div class="gauge-wrapper">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <h3 class="block-title" style="margin:0;">MOCKUP CONCEITUAL: STATUS DE INTEGRIDADE VEICULAR</h3>
+          <span class="pill pill-green">STATUS ATUAL: 84% · EXCELENTE / PREVENTIVO</span>
         </div>
-        <div class="sf">
-          <div>Apresentação homologada · Setembro 2026</div>
-          <div>Live Consultoria Empresarial</div>
+        <div class="gauge-track">
+          <div class="gauge-marker"></div>
+        </div>
+        <div class="gauge-labels">
+          <span style="color:#ef4444;">CRÍTICO (0 - 40%)</span>
+          <span style="color:#f59e0b;">ATENÇÃO (41 - 70%)</span>
+          <span style="color:#10b981;">SAUDÁVEL (71 - 100%)</span>
         </div>
       </div>
 
-    </div><!-- /deck-inner -->
-  </div><!-- /deck-wrap -->
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="block-title">📊 Tradução Visual Sem Números Complexos</h3>
+          <p>Em vez de assustar o cliente leigo com tabelas complexas de folga mecânica ou viscosidade em centistokes, o sistema traduz a condição do carro em uma barra de saúde intuitiva por saturação cromática (Verde, Amarelo, Vermelho).</p>
+        </div>
+        <div class="card">
+          <h3 class="block-title">💰 Valor Concreto na Revenda do Carro</h3>
+          <p>Na hora de vender o carro seminovo, o motorista apresenta o histórico de manutenções com o selo Autocare. O comprador tem a prova documental de que o veículo sempre operou na faixa verde, agregando valor tangível de revenda.</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- CONTROLS -->
-  <div class="controls">
-    <button class="nav-btn" id="prev-btn" disabled>← Anterior</button>
-    <div class="progress-area">
-      <div class="dots-wrap" id="dots"></div>
+    <!-- SEÇÃO 8: APLICAÇÕES FÍSICAS -->
+    <section>
+      <div class="section-tag">08 · Desdobramentos Físicos</div>
+      <h2 class="section-title">Fachadas de Oficina & <span>Selos de Credenciamento</span></h2>
+      
+      <div class="grid-3">
+        <div class="card">
+          <h3 class="block-title">🏬 Fachadas Híbridas</h3>
+          <p>Adoção de flexibilidade orçamentária: painéis de ACM escuro de alta durabilidade para oficinas estruturadas ou aplicação de letra-caixa direta em paredes altas já existentes.</p>
+        </div>
+        <div class="card">
+          <h3 class="block-title">⭕ Selos Concêntricos</h3>
+          <p>Criação de anéis concêntricos para classificar o nível de qualificação técnica das oficinas (ex: Padrão, Prata, Ouro), servindo de selo de orgulho para o credenciado.</p>
+        </div>
+        <div class="card">
+          <h3 class="block-title">🪧 Sinalização de Franquia</h3>
+          <p>Desenvolvimento de pictogramas universais padronizados tanto para telas de aplicativo quanto para placas de setorização no chão de oficina e totens interativos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 9: PLANO DE AÇÃO -->
+    <section id="plano">
+      <div class="section-tag">09 · Governança & Próximos Passos</div>
+      <h2 class="section-title">Plano de Ação Estruturado: <span>Cronograma de Entregas</span></h2>
+      <p>As deliberações da reunião foram convertidas no seguinte plano tático com prazos acordados:</p>
+
+      <div class="table-responsive">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Ação / Entregável</th>
+              <th>Responsável</th>
+              <th>Prazo Estimado</th>
+              <th>Status Operacional</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Curadoria no Pinterest/Behance:</strong> Enviar referências de preferência via WhatsApp</td>
+              <td>Marcel Patrick</td>
+              <td>23/09/2026</td>
+              <td><span class="pill pill-amber">Vencido / Enviar Hoje</span></td>
+            </tr>
+            <tr>
+              <td><strong>Refinamento Cromático:</strong> Adicionar cinza platinado e azuis de suporte ao manual</td>
+              <td>Fábio Santos</td>
+              <td>28/09/2026</td>
+              <td><span class="pill pill-blue">Em Andamento</span></td>
+            </tr>
+            <tr>
+              <td><strong>Estudos da Marca Autocare:</strong> Prototipagem do símbolo do farol e tipografia</td>
+              <td>Fábio Santos</td>
+              <td>02/10/2026</td>
+              <td><span class="pill pill-blue">Em Andamento</span></td>
+            </tr>
+            <tr>
+              <td><strong>Design dos Selos de Qualificação:</strong> Níveis e hierarquias da rede credenciada</td>
+              <td>Fábio Santos</td>
+              <td>05/10/2026</td>
+              <td><span class="pill pill-green">A Iniciar</span></td>
+            </tr>
+            <tr>
+              <td><strong>Layout do Gráfico de Saúde:</strong> Modelo visual do laudo para smartphone</td>
+              <td>Fábio Santos</td>
+              <td>05/10/2026</td>
+              <td><span class="pill pill-green">A Iniciar</span></td>
+            </tr>
+            <tr>
+              <td><strong>Reunião de Apresentação Oficial:</strong> Convocação para aprovação das opções de logo</td>
+              <td>Fábio + Luiz Portal</td>
+              <td>29/09/2026</td>
+              <td><span class="pill pill-amber">A Agendar</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 10: CONCLUSÃO -->
+    <section>
+      <div class="card highlight" style="text-align:center; padding:44px 30px;">
+        <h2 class="section-title" style="margin-bottom:14px;">Prontidão para o Registro e Lançamento do Piloto</h2>
+        <p style="font-size:18px; max-width:750px; margin:0 auto 24px; color:var(--platina);">
+          Com a homologação conceitual do Moodboard, a Autocare avança com solidez técnica. O próximo marco será a aprovação das propostas da marca para darmos entrada imediata no protocolo do INPI e na montagem das peças comerciais de lançamento.
+        </p>
+        <div style="display:inline-flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+          <span class="pill pill-green" style="font-size:13px; padding:8px 16px;">CONCEITO: FAROL HOMOLOGADO</span>
+          <span class="pill pill-blue" style="font-size:13px; padding:8px 16px;">PALETA 60-30-10 COM PLATINADO</span>
+          <span class="pill pill-amber" style="font-size:13px; padding:8px 16px;">OPERAÇÃO DIGITAL FIRST</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div style="max-width:900px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <div>Autocare &nbsp;·&nbsp; <strong>Live Consultoria Empresarial</strong></div>
+      <div>Consultores: Luiz Portal &amp; Cléber Donato</div>
+      <div>Data da Reunião: 21/09/2026</div>
     </div>
-    <span class="slide-counter"><span id="curr">1</span> / 12</span>
-    <button class="nav-btn primary" id="next-btn" style="margin-left:14px;">Próximo →</button>
-  </div>
+  </footer>
 
+  <!-- SCRIPT PARA BARRA DE PROGRESSO DE ROLAGEM -->
   <script>
-    const slides   = document.querySelectorAll('.slide');
-    const prevBtn  = document.getElementById('prev-btn');
-    const nextBtn  = document.getElementById('next-btn');
-    const currEl   = document.getElementById('curr');
-    const dotsWrap = document.getElementById('dots');
-    const TOTAL    = slides.length;
-    let current    = 0;
-
-    for (let i = 0; i < TOTAL; i++) {
-      const d = document.createElement('div');
-      d.className = 'dot' + (i === 0 ? ' active' : '');
-      d.title = `Slide ${i + 1}`;
-      d.addEventListener('click', () => goTo(i));
-      dotsWrap.appendChild(d);
-    }
-
-    function goTo(idx) {
-      if (idx === current) return;
-      slides[current].classList.remove('active');
-      slides[current].classList.add('exit-left');
-      setTimeout(() => slides[current - (idx > current ? 0 : 0)].classList.remove('exit-left'), 400);
-      current = idx;
-      slides[current].classList.add('active');
-      slides[current].scrollTop = 0;
-      update();
-    }
-
-    function update() {
-      document.querySelectorAll('.dot').forEach((d, i) => {
-        d.classList.toggle('active', i === current);
-      });
-      currEl.textContent = current + 1;
-      prevBtn.disabled = current === 0;
-      nextBtn.textContent = current === TOTAL - 1 ? '↺ Recomeçar' : 'Próximo →';
-    }
-
-    prevBtn.addEventListener('click', () => { if (current > 0) goTo(current - 1); });
-    nextBtn.addEventListener('click', () => goTo(current === TOTAL - 1 ? 0 : current + 1));
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextBtn.click(); }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); prevBtn.click(); }
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
     });
-
-    update();
   </script>
 </body>
 </html>
